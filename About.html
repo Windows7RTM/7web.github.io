@@ -1,140 +1,159 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>About - XTMweb</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
+<meta charset="UTF-8">
+<title>About – 7web</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* About page extra styles */
+.about-header {
+    text-align: center;
+    margin: 30px 0 10px;
+    font-size: 36px;
+    color: #003e7e;
+}
+.about-version {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+}
+.about-log {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    padding: 20px;
+    background: linear-gradient(#ffffff,#f1f1f1);
+    border-radius: 6px;
+    border: 1px solid #c2c2c2;
+    font-family: Arial, sans-serif;
+}
+.about-log header {
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #003e7e;
+}
+.about-log p, .about-log ul, .about-log li {
+    margin: 5px 0 15px;
+}
 
-    .top-bar {
-      background-image: linear-gradient(Black, rgb(44, 44, 44));
-      color: #fff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-    }
+/* Footer and navbar to match home/downloads exactly */
+.footer {
+    text-align:center;
+    padding:15px;
+    font-size:12px;
+    color:#666;
+    background: linear-gradient(#f5f5f5,#e1e1e1);
+}
 
-    .top-bar a {
-      color: #fff;
-      text-decoration: none;
-      padding: 10px;
-    }
-
-    .top-bar a:hover {
-        background-image: linear-gradient(rgb(34, 34, 34), rgb(124, 124, 124));
-    }
-
-    .search-input {
-      padding: 5px 10px;
-      border: none;
-      border-radius: 3px;
-      font-size: 14px;
-    }
-
-    .left-links {
-      display: flex;
-      align-items: center;
-      height: 60px;
-
-    }
-
-    .XTMlogo {
-      height: 60px;
-      width: auto;
-      display: flex;
-    }
-  </style>
+.header { 
+    background: linear-gradient(#ffffff, #e6e6e6); 
+    border-bottom:1px solid #b5b5b5; 
+}
+.header-inner { 
+    width:980px; 
+    margin:auto; 
+    height:70px; 
+    display:flex; 
+    align-items:center; 
+}
+.logo a {
+    display:flex; 
+    align-items:center; 
+    text-decoration:none; 
+    color:#003e7e;
+}
+.nav a {
+    position:relative; 
+    display:inline-block; 
+    padding:8px 14px; 
+    margin-left:6px; 
+    text-decoration:none; 
+    color:#1a1a1a; 
+    border-radius:3px; 
+    border:1px solid transparent; 
+    transition: all 0.2s ease;
+}
+.nav a:hover {
+    border:1px solid #9db8dd; 
+    background:linear-gradient(#ffffff,#e8f1fb 45%,#d2e3f8 46%,#c1d8f2); 
+    box-shadow:0 0 8px rgba(66,133,244,0.6), inset 0 1px 0 rgba(255,255,255,.9); 
+    color:#003e7e;
+}
+.nav a.active {
+    border:1px solid #6b8fb8; 
+    background:linear-gradient(#fdfefe,#e6effa 45%,#cbdcf4 46%,#b7cfee); 
+    box-shadow: inset 0 1px 0 #fff, inset 0 -1px 0 rgba(0,0,0,.15), 0 0 6px rgba(66,133,244,0.5); 
+    color:#003e7e;
+}
+</style>
 </head>
+
 <body>
-  <div class="top-bar">
-    <div class="left-links">
-      <a href="index.html"><img class="XTMlogo" src="XTMweb Logo 18.09.24.png" alt="XTM logo" height="40" width="10"></a>
-      <a href="downloads.html">Downloads</a>
-      <a href="Social Info.html">Social Info</a>
-      <a href="About.html">About</a>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <div class="logo" style="display:flex; align-items:center; gap:8px;">
+      <a href="index.html">
+        <img src="logo/7web Logo.png" alt="7web Logo" style="height:40px; width:40px; object-fit:contain;">
+        <span style="font-size:24px; font-weight:bold;">7web</span>
+      </a>
     </div>
-    <div class="search">
-      <input type="text" class="search-input" placeholder="Search">
+
+    <div class="nav">
+      <a href="socials.html">Socials</a>
+      <a href="downloads.html">Downloads</a>
+      <a href="techcollection.html">Tech Collection</a>
+      <a href="about.html" class="active">About Website</a>
     </div>
   </div>
+</div>
+
+<!-- ABOUT CONTENT -->
+<h1 class="about-header">About 7web</h1>
+<p class="about-version">7web Version: Beta 1.8</p>
+
+<div class="about-log">
+
+    <header>Beta v1.8 - 13th-14th January 2026</header>
+    <p>Complete redesign of the site with new branding as <strong>7web</strong>!</p>
+    <p>Added a 5-slide homepage carousel with:</p>
+    <ul>
+        <li>Welcome banner</li>
+        <li>Socials</li>
+        <li>Downloads</li>
+        <li>Tech Collection</li>
+        <li>About Website</li>
+    </ul>
+    <p>Social links fully integrated: TikTok, YouTube, and X/Twitter.</p>
+    <p>Downloads section updated with hover effects and icons for ISO, Software, and Wallpapers. Note: Some links, such as the ISO download, will be non-functional until the next update.</p>
+    <p>Wallpapers pages have been temporarily removed.</p>
+    <p>Many pages will not be functional until v2.0.</p>
+    <p>Tech Collection added with Laptop, Phone, and Console boxes.</p>
+    <p>Hover effects added to all content boxes across the site.</p>
+    <p>The previous weird “1.7 Issues” section has been removed.</p>
+
+    <header>Beta v1.7.4</header>
+    <p>Fixed the Maria Kujou Windows 7 Wallpaper Downloads.</p>
+
+    <header>Beta v1.7.3</header>
+    <p>Fixed the Maria Kujou Windows 7 Wallpaper Downloads.</p>
+
+    <header>Beta v1.7.2</header>
+    <p>Rebranded from XMTweb to 7web. Site brought back after months under a new name. Added some wallpapers. All social links updated.</p>
+
+    <header>Beta v1.7.1</header>
+    <p>About page updated to include a change log.</p>
+
+    <header>Beta v1.7</header>
+    <p>Brand new site – moved from Google Sites to coding with HTML/CSS.</p>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    © 2026 7web · Windows7RTM
+</div>
+
 </body>
-
-<style>
-  h1 {
-  text-align: center;
-  font-family: Arial, sans-serif;
-}
-</style>
-
-<h1>About XTMweb</h1>
-
-<style>
-ul {
-  text-align: center;
-  font-family: Arial, sans-serif;
-}
-</style>
-
-<h2>XTMweb Version: Beta 1.7.4</h2>
-
-<style>
-  h2 {
-    text-align: center;
-    font-family: Arial, sans-serif;
-  }
-  </style>
-
-<style>
-  header {
-  text-align: center;
-  font-family: Arial, sans-serif;
-}
-</style>
-
-<header>
-  XTMweb v1.7.4 Change Log:
-  <br>
-  ACTUALLY Fixed the Maria Kujou Windows 7 Wallpaper Downloads
-</header>
-
-<hr>
-
-<header>
-  XTMweb v1.7.3 Change Log:
-  <br>
-  Fixed the Maria Kujou Windows 7 Wallpaper Downloads
-</header>
-
-<header>
-  XTMweb v1.7.2 Change Log:
-  <br>
-  Rebranded from XMTweb to XTMweb
-  Site has been brought back to life after Months under a new Name!
-  Added sum Wallpapers!
-  All Social Links HAVE been Updated
-</header>
-
-<header>
-  XMTweb v1.7.1 Change Log:
-  <br>
-  About page updated to have an Change Log
-</header>
-
-<header>
-  <br>
-  XMTweb v1.7 Change Log:
-  <br>
-  Brand new site - Moved from Google Sites to Coding HTML CSS
-</header>
-
-<header>
-  <br>
-  v1.7 Issues
-  <br>
-  Top icons on homepage not loading - Fixed
-</header>
-
 </html>

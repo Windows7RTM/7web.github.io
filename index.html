@@ -1,180 +1,193 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Home - XTMweb</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    .top-bar {
-      background-image: linear-gradient(Black, rgb(44, 44, 44));
-      color: #fff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-    }
-
-    .top-bar a {
-      color: #fff;
-      text-decoration: none;
-      padding: 10px;
-    }
-
-    .top-bar a:hover {
-        background-image: linear-gradient(rgb(34, 34, 34), rgb(124, 124, 124));
-    }
-
-    .search-input {
-      padding: 5px 10px;
-      border: none;
-      border-radius: 3px;
-      font-size: 14px;
-    }
-
-    .left-links {
-      display: flex;
-      align-items: center;
-      height: 60px;
-
-    }
-
-    .XTMlogo {
-      height: 60px;
-      width: auto;
-      display: flex;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>7web – Home</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* CAROUSEL STYLES */
+.carousel {
+    padding: 40px 0 30px;
+}
+.carousel-viewport {
+    width: 980px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0,0,0,.25);
+    background: linear-gradient(#dcecff, #a9c8f2);
+}
+.carousel-track { position: relative; height: 260px; }
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    z-index: 2;
+}
+.slide.exit {
+    opacity: 0;
+    transform: translateX(-40px);
+}
+.slide-text { padding: 70px; }
+.slide-text h1 { font-size: 36px; font-weight: 300; color: #003e7e; }
+.aero-btn {
+    position: relative;
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 4px;
+    border: 1px solid #3b6ea5;
+    background: linear-gradient(#9dd2ff, #3a7bd5 45%, #2b62b9 46%, #1e4f9c);
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.8),
+                inset 0 -1px 0 rgba(0,0,0,.25),
+                0 1px 2px rgba(0,0,0,.4);
+    overflow: hidden;
+}
+.aero-btn::before {
+    content: "";
+    position: absolute;
+    top: 1px; left: 1px; right: 1px;
+    height: 50%;
+    background: linear-gradient(rgba(255,255,255,.85), rgba(255,255,255,.15));
+}
+.aero-btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,.6) 50%, transparent 70%);
+    transform: translateX(-120%);
+    animation: sweep 6s infinite;
+}
+@keyframes sweep {
+    0%,70% { transform: translateX(-120%); }
+    100% { transform: translateX(120%); }
+}
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px; height:36px;
+    border-radius:50%;
+    border:1px solid #6b8fb8;
+    background: linear-gradient(#ffffff, #cfddee);
+    box-shadow: inset 0 1px 0 #fff, 0 2px 4px rgba(0,0,0,.4);
+    cursor:pointer;
+}
+.arrow.left { left:10px; }
+.arrow.right { right:10px; }
+.carousel-dots { text-align:center; margin-top:12px; }
+.dot { width:11px; height:11px; border-radius:50%; background:#9db8dd; display:inline-block; margin:0 4px; cursor:pointer; }
+.dot.active { background:#2b62b9; }
+</style>
 </head>
 <body>
-  <div class="top-bar">
-    <div class="left-links">
-      <a href="index.html"><img class="XTMlogo" src="XTMweb Logo 18.09.24.png" alt="XTM logo" height="40" width="10"></a>
-      <a href="downloads.html">Downloads</a>
-      <a href="Social Info.html">Social Info</a>
-      <a href="About.html">About</a>
+
+<!-- NAVBAR -->
+<div class="header">
+  <div class="header-inner">
+    <div class="logo" style="display:flex; align-items:center; gap:8px;">
+      <a href="index.html" style="display:flex; align-items:center; text-decoration:none; color:#003e7e;">
+        <img src="logo/7web Logo.png" alt="7web Logo" style="height:40px; width:40px; object-fit:contain;">
+        <span style="font-size:24px; font-weight:bold; color:#003e7e;">7web</span>
+      </a>
     </div>
-    <div class="search">
-      <input type="text" class="search-input" placeholder="Search">
+    <div class="nav">
+      <a href="socials.html">Socials</a>
+      <a href="downloads.html">Downloads</a>
+      <a href="techcollection.html">Tech Collection</a>
+      <a href="about.html">About Website</a>
     </div>
   </div>
-</body>
-
-<style>
-  h1, h2 {
-    text-align: center;
-    font-family: Arial, sans-serif;
-  }
-  
-  ul {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .nav-item {
-    text-align: center;
-    margin: 0 15px; /* Adjust spacing between items */
-  }
-  
-  .nav-item img {
-    display: block;
-    margin: 0 auto; /* Centers the image */
-  }
-  
-  .nav-item a {
-    text-decoration: none;
-    color: black;
-    font-family: Arial, sans-serif;
-  }
-</style>
-
-<h1>Welcome to the all new XTMweb!</h1>
-<h2>Where would you like to go?</h2>
-
-<ul>
-  <li class="nav-item">
-    <a href="index.html">
-      <img src="Icons/wwanmm_1021.png" alt="Home" height="" width="">
-      <div>Home</div>
-    </a>
-  </li>
-  <li class="nav-item">
-    <a href="downloads.html">
-      <img src="Icons/imageres_184.png" alt="Downloads" height="" width="">
-      <div>Downloads</div>
-    </a>
-  </li>
-  <li class="nav-item">
-    <a href="Social Info.html">
-      <img src="Icons/ieframe_190.png" alt="Social Info" height="" width="">
-      <div>Social Info</div>
-    </a>
-  </li>
-  <li class="nav-item">
-    <a href="About.html">
-      <img src="Icons/dot3ui_2001.png" alt="About" height="" width="">
-      <div>About</div>
-    </a>
-  </li>
-</ul>
-
-<style>
-  .social-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    font-family: "Segoe UI", Arial, sans-serif;
-    text-align: center;
-  }
-
-  .social-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .social-item a {
-    text-decoration: none;
-    color: black;
-    margin-top: 10px;
-  }
-
-  .social-item img {
-    height: 200px;
-    width: 200px;
-  }
-</style>
-</head>
-<body>
-
-<h2 style="text-align: center;">Social Links</h2>
-
-<div class="social-container">
-<div class="social-item">
-  <a href="https://discord.gg/UmguEYQ7nn">
-    <img src="Icons/Discord.png" alt="Discord">
-  </a>
-  <a href="https://discord.gg/UmguEYQ7nn">Discord</a>
 </div>
 
-<div class="social-item">
-  <a href="https://youtube.com/@xtm7.o">
-    <img src="Icons/YouTube.png" alt="YouTube">
-  </a>
-  <a href="https://youtube.com/@xtm7.o">YouTube</a>
+<!-- CAROUSEL -->
+<div class="carousel">
+  <div class="carousel-viewport">
+    <button class="arrow left">&#9664;</button>
+    <button class="arrow right">&#9654;</button>
+    <div class="carousel-track">
+      <div class="slide active">
+        <div class="slide-text">
+          <h1>Welcome to 7web</h1>
+          <p>Your tech & content hub.</p>
+          <a href="about.html" class="aero-btn">Learn More</a>
+        </div>
+      </div>
+      <div class="slide">
+        <div class="slide-text">
+          <h1>Socials</h1>
+          <p>Follow me online: TikTok, YouTube, X.</p>
+          <a href="socials.html" class="aero-btn">Go to Socials</a>
+        </div>
+      </div>
+      <div class="slide">
+        <div class="slide-text">
+          <h1>Downloads</h1>
+          <p>ISO, software, wallpapers.</p>
+          <a href="downloads.html" class="aero-btn">Go to Downloads</a>
+        </div>
+      </div>
+      <div class="slide">
+        <div class="slide-text">
+          <h1>Tech Collection</h1>
+          <p>My curated tech content.</p>
+          <a href="techcollection.html" class="aero-btn">See Tech Collection</a>
+        </div>
+      </div>
+      <div class="slide">
+        <div class="slide-text">
+          <h1>About 7web</h1>
+          <p>New design, branding & v1.8 release log.</p>
+          <a href="about.html" class="aero-btn">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="carousel-dots">
+    <span class="dot active" data-index="0"></span>
+    <span class="dot" data-index="1"></span>
+    <span class="dot" data-index="2"></span>
+    <span class="dot" data-index="3"></span>
+    <span class="dot" data-index="4"></span>
+  </div>
 </div>
 
-<div class="social-item">
-  <a href="https://tiktok.com/@xtm7o">
-    <img src="Icons/TikTok.png" alt="TikTok">
-  </a>
-  <a href="https://tiktok.com/@xtm7o">TikTok</a>
+<!-- FOOTER -->
+<div class="footer">
+    © 2026 7web · Windows7RTM
 </div>
-</div>
+
+<script>
+const slides = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".dot");
+const prev = document.querySelector(".arrow.left");
+const next = document.querySelector(".arrow.right");
+let index = 0;
+function showSlide(newIndex){
+    slides[index].classList.remove("active");
+    slides[index].classList.add("exit");
+    index = newIndex;
+    if(index < 0) index = slides.length - 1;
+    if(index >= slides.length) index = 0;
+    slides[index].classList.remove("exit");
+    slides[index].classList.add("active");
+    dots.forEach(d => d.classList.remove("active"));
+    dots[index].classList.add("active");
+}
+next.onclick = () => showSlide(index + 1);
+prev.onclick = () => showSlide(index - 1);
+dots.forEach(dot => dot.onclick = () => showSlide(parseInt(dot.dataset.index)));
+setInterval(() => showSlide(index + 1), 6000);
+</script>
 
 </body>
 </html>
