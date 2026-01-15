@@ -87,6 +87,51 @@
 .carousel-dots { text-align:center; margin-top:12px; }
 .dot { width:11px; height:11px; border-radius:50%; background:#9db8dd; display:inline-block; margin:0 4px; cursor:pointer; }
 .dot.active { background:#2b62b9; }
+
+/* MAIN CONTENT BELOW CAROUSEL */
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    width: 980px;
+    margin: 40px auto;
+    gap: 20px;
+}
+
+/* LATEST VIDEO & SUB COUNT BLOCKS */
+.content-block {
+    width: 48%;
+    background: linear-gradient(#ffffff,#f1f1f1);
+    border: 1px solid #c2c2c2;
+    border-radius: 6px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.content-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+.content-block h2 {
+    font-size: 22px;
+    color: #003e7e;
+    margin-bottom: 15px;
+}
+
+/* YOUTUBE IFRAME */
+.latest-video iframe {
+    width: 100%;
+    height: 270px;
+    border: none;
+    border-radius: 6px;
+}
+
+/* SUB COUNT IFRAME */
+.sub-count iframe {
+    width: 100%;
+    height: 80px;
+    border: 0;
+    border-radius: 6px;
+}
 </style>
 </head>
 <body>
@@ -96,7 +141,7 @@
   <div class="header-inner">
     <div class="logo" style="display:flex; align-items:center; gap:8px;">
       <a href="index.html" style="display:flex; align-items:center; text-decoration:none; color:#003e7e;">
-        <img src="logo/7web Logo.png" alt="7web Logo" style="height:40px; width:40px; object-fit:contain;">
+        <img src="logo/7web-logo.png" alt="7web Logo" style="height:40px; width:40px; object-fit:contain;">
         <span style="font-size:24px; font-weight:bold; color:#003e7e;">7web</span>
       </a>
     </div>
@@ -161,12 +206,28 @@
   </div>
 </div>
 
+<!-- MAIN CONTENT BLOCKS -->
+<div class="main-content">
+  <!-- Latest YouTube Video -->
+  <div class="content-block latest-video">
+    <h2>Latest YouTube Video</h2>
+    <iframe src="https://www.youtube.com/embed/C6WQQSk8zU8" allowfullscreen></iframe>
+  </div>
+
+  <!-- Live Sub Count -->
+  <div class="content-block sub-count">
+    <h2>Live Subscriber Count</h2>
+    <iframe src="https://livecounts.io/embed/youtube-live-subscriber-counter/UCTLa3GkXTXTqiIRMGwK8gYA"></iframe>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <div class="footer">
     © 2026 7web · Windows7RTM
 </div>
 
 <script>
+// CAROUSEL SCRIPT
 const slides = document.querySelectorAll(".slide");
 const dots = document.querySelectorAll(".dot");
 const prev = document.querySelector(".arrow.left");
