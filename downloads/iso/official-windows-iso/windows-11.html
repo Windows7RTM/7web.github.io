@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Windows 11 ISO Downloads – 7web</title>
+<link rel="stylesheet" href="../../../style.css">
+<style>
+html, body {
+    background: linear-gradient(135deg, #0a0a14, #0f0f1f, #0a0a14) !important;
+    background-attachment: fixed !important;
+    min-height: 100vh;
+}
+
+/* Win 11 frosted glass navbar */
+.header {
+    background: rgba(20, 20, 35, 0.85) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+    box-shadow: 0 1px 20px rgba(0,0,0,0.4) !important;
+    backdrop-filter: blur(20px) !important;
+}
+.nav a { color: #cccccc !important; border: 1px solid transparent !important; border-radius: 6px !important; }
+.nav a:hover {
+    color: #ffffff !important;
+    background: rgba(255,255,255,0.08) !important;
+    border-color: rgba(255,255,255,0.1) !important;
+    box-shadow: none !important;
+}
+.nav a.active {
+    color: #ffffff !important;
+    background: rgba(99,102,241,0.25) !important;
+    border-color: rgba(99,102,241,0.5) !important;
+    box-shadow: none !important;
+}
+.logo span { color: #ffffff !important; }
+
+/* Win 11 hero header */
+.page-header {
+    text-align: center;
+    padding: 60px 0 30px;
+    position: relative;
+}
+.page-header::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 200px;
+    background: radial-gradient(ellipse, rgba(99,102,241,0.15) 0%, transparent 70%);
+    pointer-events: none;
+}
+.page-header img {
+    height: 72px;
+    margin-bottom: 16px;
+    filter: drop-shadow(0 0 20px rgba(99,102,241,0.5));
+}
+.page-header h1 {
+    font-size: 40px;
+    font-weight: 300;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+.page-header p {
+    color: rgba(255,255,255,0.5);
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.iso-container {
+    width: 980px;
+    margin: 30px auto 60px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+/* Win 11 rounded glass cards */
+.iso-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+    transition: .25s;
+    backdrop-filter: blur(10px);
+}
+.iso-card:hover {
+    transform: translateY(-4px);
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(99,102,241,0.4);
+    box-shadow: 0 8px 32px rgba(99,102,241,0.15);
+}
+.iso-card h2 {
+    font-size: 17px;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0 0 14px;
+    letter-spacing: -0.2px;
+}
+
+/* Win 11 dropdown */
+.version-select-wrap { margin-bottom: 14px; }
+.version-select-wrap label {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.4);
+    display: block;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.version-select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    background: rgba(255,255,255,0.06);
+    color: #ffffff;
+    font-size: 13px;
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='rgba(255,255,255,0.5)'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+    transition: .2s;
+}
+.version-select:focus {
+    outline: none;
+    border-color: rgba(99,102,241,0.6);
+    box-shadow: 0 0 0 2px rgba(99,102,241,0.2);
+    background: rgba(255,255,255,0.08);
+}
+.version-select option { background: #1a1a2e; color: #ffffff; }
+
+/* Win 11 spec panel */
+.spec-info {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 16px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    padding: 12px 14px;
+}
+.spec-info div {
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.spec-info div:last-child { margin-bottom: 0; }
+.spec-label {
+    font-weight: 500;
+    color: rgba(255,255,255,0.35);
+    font-size: 12px;
+}
+.spec-value {
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+}
+
+/* Win 11 pill button */
+.dl-btn {
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+    border: none;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 13px;
+    text-decoration: none;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    transition: .2s;
+    box-shadow: 0 2px 12px rgba(99,102,241,0.4);
+}
+.dl-btn:hover {
+    background: linear-gradient(135deg, #7577f3, #6055f5);
+    box-shadow: 0 4px 20px rgba(99,102,241,0.6);
+    transform: translateY(-1px);
+}
+.dl-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 6px rgba(99,102,241,0.3);
+}
+
+/* Section label */
+.section-label {
+    width: 980px;
+    margin: 10px auto 10px;
+    color: rgba(255,255,255,0.3);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Win 11 footer */
+.footer {
+    background: rgba(20,20,35,0.85) !important;
+    color: rgba(255,255,255,0.4) !important;
+    border-top: 1px solid rgba(255,255,255,0.06) !important;
+    backdrop-filter: blur(20px) !important;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="logo" style="display:flex;align-items:center;gap:8px;">
+      <a href="../../../index.html" style="display:flex;align-items:center;text-decoration:none;">
+        <img src="../../../logo/7web-logo.png" style="height:40px;">
+        <span style="font-size:24px;font-weight:bold;">7web</span>
+      </a>
+    </div>
+    <div class="nav">
+      <a href="../../../socials.html">Socials</a>
+      <a href="../../../downloads.html" class="active">Downloads</a>
+      <a href="../../../techcollection.html">Tech Collection</a>
+      <a href="../../../about.html">About Website</a>
+    </div>
+  </div>
+</div>
+
+<div class="page-header">
+  <img src="../../../icons/windows-11.png">
+  <h1>Windows 11 ISO Downloads</h1>
+  <p>Official Windows 11 disc images — select your edition and version</p>
+</div>
+
+<!-- Win 11 is 64-bit only -->
+<div class="section-label">64-Bit (x64) · ARM64</div>
+<div class="iso-container">
+
+  <div class="iso-card">
+    <h2>Windows 11 Home</h2>
+    <div class="version-select-wrap">
+      <label>Version</label>
+      <select class="version-select" onchange="updateSpecs(this, 'w11h')">
+        <option value="21h2">21H2 — RTM (Build 22000)</option>
+        <option value="22h2">22H2 — 2022 Update (Build 22621)</option>
+        <option value="23h2">23H2 — 2023 Update (Build 22631)</option>
+        <option value="24h2" selected>24H2 — 2024 Update (Build 26100)</option>
+      </select>
+    </div>
+    <div class="spec-info" id="w11h">
+      <div><span class="spec-label">Build</span><span class="spec-value">26100</span></div>
+      <div><span class="spec-label">Arch</span><span class="spec-value">64-Bit (x64)</span></div>
+      <div><span class="spec-label">Language</span><span class="spec-value">English</span></div>
+      <div><span class="spec-label">Size</span><span class="spec-value">~6.1GB</span></div>
+    </div>
+    <a href="#" class="dl-btn">Download ISO</a>
+  </div>
+
+  <div class="iso-card">
+    <h2>Windows 11 Pro</h2>
+    <div class="version-select-wrap">
+      <label>Version</label>
+      <select class="version-select" onchange="updateSpecs(this, 'w11p')">
+        <option value="21h2">21H2 — RTM (Build 22000)</option>
+        <option value="22h2">22H2 — 2022 Update (Build 22621)</option>
+        <option value="23h2">23H2 — 2023 Update (Build 22631)</option>
+        <option value="24h2" selected>24H2 — 2024 Update (Build 26100)</option>
+      </select>
+    </div>
+    <div class="spec-info" id="w11p">
+      <div><span class="spec-label">Build</span><span class="spec-value">26100</span></div>
+      <div><span class="spec-label">Arch</span><span class="spec-value">64-Bit (x64)</span></div>
+      <div><span class="spec-label">Language</span><span class="spec-value">English</span></div>
+      <div><span class="spec-label">Size</span><span class="spec-value">~6.1GB</span></div>
+    </div>
+    <a href="#" class="dl-btn">Download ISO</a>
+  </div>
+
+  <div class="iso-card">
+    <h2>Windows 11 Enterprise</h2>
+    <div class="version-select-wrap">
+      <label>Version</label>
+      <select class="version-select" onchange="updateSpecs(this, 'w11e')">
+        <option value="21h2">21H2 — RTM (Build 22000)</option>
+        <option value="22h2">22H2 — 2022 Update (Build 22621)</option>
+        <option value="23h2">23H2 — 2023 Update (Build 22631)</option>
+        <option value="24h2" selected>24H2 — 2024 Update (Build 26100)</option>
+      </select>
+    </div>
+    <div class="spec-info" id="w11e">
+      <div><span class="spec-label">Build</span><span class="spec-value">26100</span></div>
+      <div><span class="spec-label">Arch</span><span class="spec-value">64-Bit (x64)</span></div>
+      <div><span class="spec-label">Language</span><span class="spec-value">English</span></div>
+      <div><span class="spec-label">Size</span><span class="spec-value">~6.1GB</span></div>
+    </div>
+    <a href="#" class="dl-btn">Download ISO</a>
+  </div>
+
+</div>
+
+<div class="section-label">ARM64</div>
+<div class="iso-container">
+
+  <div class="iso-card">
+    <h2>Windows 11 Home (ARM)</h2>
+    <div class="version-select-wrap">
+      <label>Version</label>
+      <select class="version-select" onchange="updateSpecs(this, 'w11harm')">
+        <option value="21h2">21H2 — RTM (Build 22000)</option>
+        <option value="22h2">22H2 — 2022 Update (Build 22621)</option>
+        <option value="23h2">23H2 — 2023 Update (Build 22631)</option>
+        <option value="24h2" selected>24H2 — 2024 Update (Build 26100)</option>
+      </select>
+    </div>
+    <div class="spec-info" id="w11harm">
+      <div><span class="spec-label">Build</span><span class="spec-value">26100</span></div>
+      <div><span class="spec-label">Arch</span><span class="spec-value">ARM64</span></div>
+      <div><span class="spec-label">Language</span><span class="spec-value">English</span></div>
+      <div><span class="spec-label">Size</span><span class="spec-value">~5.8GB</span></div>
+    </div>
+    <a href="#" class="dl-btn">Download ISO</a>
+  </div>
+
+  <div class="iso-card">
+    <h2>Windows 11 Pro (ARM)</h2>
+    <div class="version-select-wrap">
+      <label>Version</label>
+      <select class="version-select" onchange="updateSpecs(this, 'w11parm')">
+        <option value="21h2">21H2 — RTM (Build 22000)</option>
+        <option value="22h2">22H2 — 2022 Update (Build 22621)</option>
+        <option value="23h2">23H2 — 2023 Update (Build 22631)</option>
+        <option value="24h2" selected>24H2 — 2024 Update (Build 26100)</option>
+      </select>
+    </div>
+    <div class="spec-info" id="w11parm">
+      <div><span class="spec-label">Build</span><span class="spec-value">26100</span></div>
+      <div><span class="spec-label">Arch</span><span class="spec-value">ARM64</span></div>
+      <div><span class="spec-label">Language</span><span class="spec-value">English</span></div>
+      <div><span class="spec-label">Size</span><span class="spec-value">~5.8GB</span></div>
+    </div>
+    <a href="#" class="dl-btn">Download ISO</a>
+  </div>
+
+  <div class="iso-card">
+    <h2>Windows 11 Enterprise (ARM)</h2>
+    <div class="version-select-wrap">
+      <label>Version</label>
+      <select class="version-select" onchange="updateSpecs(this, 'w11earm')">
+        <option value="21h2">21H2 — RTM (Build 22000)</option>
+        <option value="22h2">22H2 — 2022 Update (Build 22621)</option>
+        <option value="23h2">23H2 — 2023 Update (Build 22631)</option>
+        <option value="24h2" selected>24H2 — 2024 Update (Build 26100)</option>
+      </select>
+    </div>
+    <div class="spec-info" id="w11earm">
+      <div><span class="spec-label">Build</span><span class="spec-value">26100</span></div>
+      <div><span class="spec-label">Arch</span><span class="spec-value">ARM64</span></div>
+      <div><span class="spec-label">Language</span><span class="spec-value">English</span></div>
+      <div><span class="spec-label">Size</span><span class="spec-value">~5.8GB</span></div>
+    </div>
+    <a href="#" class="dl-btn">Download ISO</a>
+  </div>
+
+</div>
+
+<div class="footer">© 2026 7web · Windows7RTM</div>
+
+<script>
+const builds = {
+  '21h2': '22000',
+  '22h2': '22621',
+  '23h2': '22631',
+  '24h2': '26100',
+};
+const sizes64 = {
+  '21h2': '~5.1GB',
+  '22h2': '~5.5GB',
+  '23h2': '~5.8GB',
+  '24h2': '~6.1GB',
+};
+const sizesArm = {
+  '21h2': '~5.0GB',
+  '22h2': '~5.3GB',
+  '23h2': '~5.5GB',
+  '24h2': '~5.8GB',
+};
+const archMap = {
+  w11h:'64-Bit (x64)', w11p:'64-Bit (x64)', w11e:'64-Bit (x64)',
+  w11harm:'ARM64', w11parm:'ARM64', w11earm:'ARM64',
+};
+
+function updateSpecs(select, id) {
+  const ver = select.value;
+  const isArm = id.includes('arm');
+  const size = isArm ? sizesArm[ver] : sizes64[ver];
+  const el = document.getElementById(id);
+  el.innerHTML = `
+    <div><span class="spec-label">Build</span><span class="spec-value">${builds[ver]}</span></div>
+    <div><span class="spec-label">Arch</span><span class="spec-value">${archMap[id]}</span></div>
+    <div><span class="spec-label">Language</span><span class="spec-value">English</span></div>
+    <div><span class="spec-label">Size</span><span class="spec-value">${size}</span></div>
+  `;
+}
+</script>
+
+</body>
+</html>

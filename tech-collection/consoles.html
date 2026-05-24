@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Console Collection – 7web</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+.collection-wrapper {
+    width: 1000px;
+    margin: 40px auto;
+}
+
+/* BADGES */
+.badge {
+    display:inline-block;
+    padding:4px 10px;
+    border-radius:12px;
+    font-size:12px;
+    font-weight:bold;
+    margin-bottom:6px;
+    color:#fff;
+    text-align:center;
+}
+.main{background:#0072c6;}
+.secondary{background:#6a6a6a;}
+.collection{background:#9c27b0;}
+.first{background:#2e7d32;}
+.arriving{background:#ef6c00;}
+.selling{background:#c62828;}
+
+/* GRID */
+.console-grid {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+.console-item {
+    background:linear-gradient(#ffffff,#f1f1f1);
+    border:1px solid #c2c2c2;
+    border-radius:6px;
+    padding:20px;
+    transition:.2s;
+}
+.console-item:hover {
+    transform:translateY(-5px);
+    box-shadow:0 4px 12px rgba(0,0,0,.3);
+}
+.console-item img {
+    width:96px;
+    height:96px;
+    object-fit:contain;
+    display:block;
+    margin:0 auto;
+}
+.console-item h3 {
+    margin:8px 0;
+    color:#003e7e;
+    text-align:center;
+}
+
+/* INFO SECTIONS */
+.section-title {
+    font-weight:bold;
+    margin-top:10px;
+}
+ul {
+    margin:6px 0 0 18px;
+    font-size:14px;
+}
+.os-item {
+    display:list-item;
+    font-size:14px;
+    margin-top:4px;
+}
+.os-item img {
+    height:18px;
+    width:auto;
+    vertical-align:middle;
+    margin-right:4px;
+    display:inline-block;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="header">
+  <div class="header-inner">
+    <div class="logo" style="display:flex;align-items:center;gap:8px;">
+      <a href="../index.html" style="display:flex;align-items:center;text-decoration:none;">
+        <img src="../logo/7web-logo.png" style="height:40px;">
+        <span style="font-size:24px;font-weight:bold;color:#003e7e;">7web</span>
+      </a>
+    </div>
+    <div class="nav">
+      <a href="../socials.html">Socials</a>
+      <a href="../downloads.html">Downloads</a>
+      <a href="../techcollection.html" class="active">Tech Collection</a>
+      <a href="../about.html">About Website</a>
+    </div>
+  </div>
+</div>
+
+<h1 style="text-align:center;margin-top:40px;">Console Collection</h1>
+
+<div class="collection-wrapper">
+<div class="console-grid">
+
+  <div class="console-item">
+    <span class="badge collection">COLLECTION</span>
+    <img src="console-icons/xbox-360.png">
+    <h3>Microsoft Xbox 360 Slim</h3>
+    <div class="section-title">Specifications</div>
+    <ul>
+      <li>IBM PowerPC Tri-Core CPU</li>
+      <li>ATI Xenos GPU</li>
+      <li>512MB GDDR3 RAM</li>
+    </ul>
+    <div class="section-title">Originally shipped with</div>
+    <ul>
+      <li>Xbox 360 Slim Dashboard</li>
+    </ul>
+  </div>
+
+  <div class="console-item">
+    <span class="badge collection">COLLECTION</span>
+    <img src="console-icons/wii-u.png">
+    <h3>Nintendo Wii U</h3>
+    <div class="section-title">Specifications</div>
+    <ul>
+      <li>IBM PowerPC Tri-Core CPU</li>
+      <li>AMD Radeon GPU</li>
+      <li>2GB RAM</li>
+      <li>32GB Internal Storage</li>
+    </ul>
+    <div class="section-title">Originally shipped with</div>
+    <ul>
+      <li>Wii U System Software</li>
+    </ul>
+  </div>
+
+  <div class="console-item">
+    <span class="badge collection">COLLECTION</span>
+    <img src="console-icons/2ds.png">
+    <h3>Nintendo 2DS</h3>
+    <div class="section-title">Specifications</div>
+    <ul>
+      <li>ARM11 Dual-Core CPU</li>
+      <li>128MB RAM</li>
+      <li>4GB SD Card Storage</li>
+    </ul>
+    <div class="section-title">Originally shipped with</div>
+    <ul>
+      <li>Nintendo 2DS System Software</li>
+    </ul>
+  </div>
+
+</div>
+</div>
+
+<div class="footer">
+    © 2026 7web · Windows7RTM
+</div>
+
+</body>
+</html>

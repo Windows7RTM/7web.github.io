@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Windows 10 ISO Downloads – 7web</title>
+<link rel="stylesheet" href="../../../style.css">
+<style>
+html, body {
+    background: linear-gradient(135deg, #0a0a0a, #1a1a1a, #0d1117) !important;
+    background-attachment: fixed !important;
+    min-height: 100vh;
+}
+
+/* Win 10 dark navbar with blue accent */
+.header {
+    background: #1c1c1c !important;
+    border-bottom: 2px solid #0078d4 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.6) !important;
+}
+.nav a { color: #cccccc !important; border: 1px solid transparent !important; }
+.nav a:hover {
+    color: #ffffff !important;
+    background: rgba(0,120,212,0.2) !important;
+    border-color: rgba(0,120,212,0.4) !important;
+    box-shadow: none !important;
+}
+.nav a.active {
+    color: #ffffff !important;
+    background: rgba(0,120,212,0.3) !important;
+    border-color: #0078d4 !important;
+    box-shadow: none !important;
+}
+.logo span { color: #0078d4 !important; }
+
+.page-header {
+    text-align: center;
+    padding: 40px 0 20px;
+}
+.page-header img {
+    height: 64px;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 2px 8px rgba(0,120,212,0.4));
+}
+.page-header h1 {
+    font-size: 36px;
+    font-weight: 300;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: 1px;
+}
+.page-header p {
+    color: #0078d4;
+    font-size: 15px;
+    margin-top: 8px;
+}
+
+.iso-container {
+    width: 980px;
+    margin: 30px auto 60px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Win 10 flat cards */
+.iso-card {
+    background: #2d2d2d;
+    border: 1px solid #3d3d3d;
+    border-radius: 4px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    transition: .2s;
+}
+.iso-card:hover {
+    transform: translateY(-5px);
+    border-color: #0078d4;
+    box-shadow: 0 6px 20px rgba(0,120,212,0.3);
+}
+.iso-card h2 {
+    font-size: 18px;
+    font-weight: 400;
+    color: #ffffff;
+    margin: 0 0 12px;
+}
+
+.version-select-wrap { margin-bottom: 14px; }
+.version-select-wrap label {
+    font-size: 12px;
+    font-weight: bold;
+    color: #0078d4;
+    display: block;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.version-select {
+    width: 100%;
+    padding: 6px 10px;
+    border: 1px solid #3d3d3d;
+    border-radius: 2px;
+    background: #3d3d3d;
+    color: #ffffff;
+    font-size: 13px;
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%230078d4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 28px;
+}
+.version-select:focus {
+    outline: none;
+    border-color: #0078d4;
+    box-shadow: 0 0 0 1px #0078d4;
+}
+.version-select option { background: #2d2d2d; }
+
+.spec-info {
+    font-size: 13px;
+    color: #cccccc;
+    margin-bottom: 16px;
+    background: #252525;
+    border: 1px solid #3d3d3d;
+    border-left: 3px solid #0078d4;
+    border-radius: 2px;
+    padding: 10px 12px;
+}
+.spec-info div { margin-bottom: 4px; }
+.spec-info div:last-child { margin-bottom: 0; }
+.spec-label { font-weight: 600; color: #0078d4; }
+
+/* Win 10 blue accent button */
+.dl-btn {
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+    border: none;
+    border-radius: 2px;
+    background: #0078d4;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 13px;
+    text-decoration: none;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: .2s;
+}
+.dl-btn:hover { background: #106ebe; }
+.dl-btn:active { background: #005a9e; transform: translateY(1px); }
+
+.section-label {
+    width: 980px;
+    margin: 10px auto 10px;
+    color: #0078d4;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer {
+    background: #1c1c1c !important;
+    color: #cccccc !important;
+    border-top: 2px solid #0078d4 !important;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="logo" style="display:flex;align-items:center;gap:8px;">
+      <a href="../../../index.html" style="display:flex;align-items:center;text-decoration:none;">
+        <img src="../../../logo/7web-logo.png" style="height:40px;">
+        <span style="font-size:24px;font-weight:bold;">7web</span>
+      </a>
+    </div>
+    <div class="nav">
+      <a href="../../../socials.html">Socials</a>
+      <a href="../../../downloads.html" class="active">Downloads</a>
+      <a href="../../../techcollection.html">Tech Collection</a>
+      <a href="../../../about.html">About Website</a>
+    </div>
+  </div>
+</div>
+
+<div class="page-header">
+  <img src="../../../icons/windows-10.png">
+  <h1>Windows 10 ISO Downloads</h1>
+  <p>Official Windows 10 disc images — select your edition and version</p>
+</div>
+
+<div class="section-label">64-Bit (x64)</div>
+<div class="iso-container">
+
+  <div class="iso-card">
+    <h2>Windows 10 Home</h2>
+    <div class="version-select-wrap">
+      <label>Version</label>
+      <select class="version-select" onchange="updateSpecs(this, 'w10h64')">
+        <option value="1507">1507 — RTM (Build 10240)</option>
+        <option value="1511">1511 — November Update (Build 10586)</option>
+        <option value="1607">1607 — Anniversary Update (Build 14393)</option>
+        <option value="1703">1703 — Creators Update (Build 15063)</option>
+        <option value="1709">1709 — Fall Creators Update (Build 16299)</option>
+        <option value="1803">1803 — April 2018 Update (Build 17134)</option>
+        <option value="1809">1809 — October 2018 Update (Build 17763)</option>
+        <option value="1903">1903 — May 2019 Update (Build 18362)</option>
+        <option value="1909">1909 — November 2019 Update (Build 18363)</option>
+        <option value="2004">2004 — May 2020 Update (Build 19041)</option>
+        <option value="20h2">20H2 — October 2020 Update (Build 19042)</option>
+        <option value="21h1">21H1 — May 2021 Update (Build 19043)</option>
+        <option value="21h2">21H2 — November 2021 Update (Build 19044)</option>
+        <option value="22h2" selected>22H2 — 2022 Update (Build 19045)</option>
+      </select>
+    </div>
+    <div class="spec-info" id="w10h64">
+      <div><span class="spec-label">Build:</span> 19045</div>
+      <div><span class="spec-label">Arch:</span> 64-Bit (x64)</div>
+      <div><span class="spec-label">Language:</span> English</div>
+      <div><span class="spec-label">Size:</span> ~5.8GB</div>
+    </div>
+    <a href="#" class="dl-btn">Download ISO</a>
+  </div>
+
+  <div class="iso-card">
+    <h2>Windows 10 Pro</h2>
+    <div class="version-select-wrap">
+      <label>Version</label>
+      <select class="version-select" onchange="updateSpecs(this, 'w10p64')">
+        <option value="1507">1507 — RTM (Build 10240)</option>
+        <option value="1511">1511 — November Update (Build 10586)</option>
+        <option value="1607">1607 — Anniversary Update (Build 14393)</option>
+        <option value="1703">1703 — Creators Update (Build 15063)</option>
+        <option value="1709">1709 — Fall Creators Update (Build 16299)</option>
+        <option value="1803">1803 — April 2018 Update (Build 17134)</option>
+        <option value="1809">1809 — October 2018 Update (Build 17763)</option>
+        <option value="1903">1903 — May 2019 Update (Build 18362)</option>
+        <option value="1909">1909 — November 2019 Update (Build 18363)</option>
+        <option value="2004">2004 — May 2020 Update (Build 19041)</option>
+        <option value="20h2">20H2 — October 2020 Update (Build 19042)</option>
+        <option value="21h1">21H1 — May 2021 Update (Build 19043)</option>
+        <option value="21h2">21H2 — November 2021 Update (Build 19044)</option>
+        <option value="22h2" selected>22H2 — 2022 Update (Build 19045)</option>
+      </select>
+    </div>
+    <div class="spec-info" id="w10p64">
+      <div><span class="spec-label">Build:</span> 19045</div>
+      <div><span class="spec-label">Arch:</span> 64-Bit (x64)</div>
+      <div><span class="spec-label">Language:</span> English</div>
+      <div><span class="spec-label">Size:</span> ~5.8GB</div>
+    </div>
+    <a href="#" class="dl-btn">Download ISO</a>
+  </div>
+
+  <div class="iso-card">
+    <h2>Windows 10 Enterprise</h2>
+    <div class="version-select-wrap">
+      <label>Version</label>
+      <select class="version-select" onchange="updateSpecs(this, 'w10e64')">
+        <option value="1507">1507 — RTM (Build 10240)</option>
+        <option value="1511">1511 — November Update (Build 10586)</option>
+        <option value="1607">1607 — Anniversary Update (Build 14393)</option>
+        <option value="1703">1703 — Creators Update (Build 15063)</option>
+        <option value="1709">1709 — Fall Creators Update (Build 16299)</option>
+        <option value="1803">1803 — April 2018 Update (Build 17134)</option>
+        <option value="1809">1809 — October 2018 Update (Build 17763)</option>
+        <option value="1903">1903 — May 2019 Update (Build 18362)</option>
+        <option value="1909">1909 — November 2019 Update (Build 18363)</option>
+        <option value="2004">2004 — May 2020 Update (Build 19041)</option>
+        <option value="20h2">20H2 — October 2020 Update (Build 19042)</option>
+        <option value="21h1">21H1 — May 2021 Update (Build 19043)</option>
+        <option value="21h2">21H2 — November 2021 Update (Build 19044)</option>
+        <option value="22h2" selected>22H2 — 2022 Update (Build 19045)</option>
+      </select>
+    </div>
+    <div class="spec-info" id="w10e64">
+      <div><span class="spec-label">Build:</span> 19045</div>
+      <div><span class="spec-label">Arch:</span> 64-Bit (x64)</div>
+      <div><span class="spec-label">Language:</span> English</div>
+      <div><span class="spec-label">Size:</span> ~5.8GB</div>
+    </div>
+    <a href="#" class="dl-btn">Download ISO</a>
+  </div>
+
+</div>
+
+<div class="section-label">32-Bit (x86)</div>
+<div class="iso-container">
+
+  <div class="iso-card">
+    <h2>Windows 10 Home</h2>
+    <div class="version-select-wrap">
+      <label>Version</label>
+      <select class="version-select" onchange="updateSpecs(this, 'w10h32')">
+        <option value="1507">1507 — RTM (Build 10240)</option>
+        <option value="1511">1511 — November Update (Build 10586)</option>
+        <option value="1607">1607 — Anniversary Update (Build 14393)</option>
+        <option value="1703">1703 — Creators Update (Build 15063)</option>
+        <option value="1709">1709 — Fall Creators Update (Build 16299)</option>
+        <option value="1803">1803 — April 2018 Update (Build 17134)</option>
+        <option value="1809">1809 — October 2018 Update (Build 17763)</option>
+        <option value="1903">1903 — May 2019 Update (Build 18362)</option>
+        <option value="1909">1909 — November 2019 Update (Build 18363)</option>
+        <option value="2004">2004 — May 2020 Update (Build 19041)</option>
+        <option value="20h2">20H2 — October 2020 Update (Build 19042)</option>
+        <option value="21h1">21H1 — May 2021 Update (Build 19043)</option>
+        <option value="21h2" selected>21H2 — Last 32-Bit (Build 19044)</option>
+      </select>
+    </div>
+    <div class="spec-info" id="w10h32">
+      <div><span class="spec-label">Build:</span> 19044</div>
+      <div><span class="spec-label">Arch:</span> 32-Bit (x86)</div>
+      <div><span class="spec-label">Language:</span> English</div>
+      <div><span class="spec-label">Size:</span> ~3.8GB</div>
+    </div>
+    <a href="#" class="dl-btn">Download ISO</a>
+  </div>
+
+  <div class="iso-card">
+    <h2>Windows 10 Pro</h2>
+    <div class="version-select-wrap">
+      <label>Version</label>
+      <select class="version-select" onchange="updateSpecs(this, 'w10p32')">
+        <option value="1507">1507 — RTM (Build 10240)</option>
+        <option value="1511">1511 — November Update (Build 10586)</option>
+        <option value="1607">1607 — Anniversary Update (Build 14393)</option>
+        <option value="1703">1703 — Creators Update (Build 15063)</option>
+        <option value="1709">1709 — Fall Creators Update (Build 16299)</option>
+        <option value="1803">1803 — April 2018 Update (Build 17134)</option>
+        <option value="1809">1809 — October 2018 Update (Build 17763)</option>
+        <option value="1903">1903 — May 2019 Update (Build 18362)</option>
+        <option value="1909">1909 — November 2019 Update (Build 18363)</option>
+        <option value="2004">2004 — May 2020 Update (Build 19041)</option>
+        <option value="20h2">20H2 — October 2020 Update (Build 19042)</option>
+        <option value="21h1">21H1 — May 2021 Update (Build 19043)</option>
+        <option value="21h2" selected>21H2 — Last 32-Bit (Build 19044)</option>
+      </select>
+    </div>
+    <div class="spec-info" id="w10p32">
+      <div><span class="spec-label">Build:</span> 19044</div>
+      <div><span class="spec-label">Arch:</span> 32-Bit (x86)</div>
+      <div><span class="spec-label">Language:</span> English</div>
+      <div><span class="spec-label">Size:</span> ~3.8GB</div>
+    </div>
+    <a href="#" class="dl-btn">Download ISO</a>
+  </div>
+
+  <div class="iso-card">
+    <h2>Windows 10 Enterprise</h2>
+    <div class="version-select-wrap">
+      <label>Version</label>
+      <select class="version-select" onchange="updateSpecs(this, 'w10e32')">
+        <option value="1507">1507 — RTM (Build 10240)</option>
+        <option value="1511">1511 — November Update (Build 10586)</option>
+        <option value="1607">1607 — Anniversary Update (Build 14393)</option>
+        <option value="1703">1703 — Creators Update (Build 15063)</option>
+        <option value="1709">1709 — Fall Creators Update (Build 16299)</option>
+        <option value="1803">1803 — April 2018 Update (Build 17134)</option>
+        <option value="1809">1809 — October 2018 Update (Build 17763)</option>
+        <option value="1903">1903 — May 2019 Update (Build 18362)</option>
+        <option value="1909">1909 — November 2019 Update (Build 18363)</option>
+        <option value="2004">2004 — May 2020 Update (Build 19041)</option>
+        <option value="20h2">20H2 — October 2020 Update (Build 19042)</option>
+        <option value="21h1">21H1 — May 2021 Update (Build 19043)</option>
+        <option value="21h2" selected>21H2 — Last 32-Bit (Build 19044)</option>
+      </select>
+    </div>
+    <div class="spec-info" id="w10e32">
+      <div><span class="spec-label">Build:</span> 19044</div>
+      <div><span class="spec-label">Arch:</span> 32-Bit (x86)</div>
+      <div><span class="spec-label">Language:</span> English</div>
+      <div><span class="spec-label">Size:</span> ~3.8GB</div>
+    </div>
+    <a href="#" class="dl-btn">Download ISO</a>
+  </div>
+
+</div>
+
+<div class="footer">© 2026 7web · Windows7RTM</div>
+
+<script>
+const builds = {
+  '1507':'10240', '1511':'10586', '1607':'14393', '1703':'15063',
+  '1709':'16299', '1803':'17134', '1809':'17763', '1903':'18362',
+  '1909':'18363', '2004':'19041', '20h2':'19042', '21h1':'19043',
+  '21h2':'19044', '22h2':'19045'
+};
+const sizes64 = {
+  '1507':'~3.8GB', '1511':'~3.9GB', '1607':'~4.1GB', '1703':'~4.3GB',
+  '1709':'~4.4GB', '1803':'~4.6GB', '1809':'~4.8GB', '1903':'~5.0GB',
+  '1909':'~5.1GB', '2004':'~5.3GB', '20h2':'~5.4GB', '21h1':'~5.5GB',
+  '21h2':'~5.7GB', '22h2':'~5.8GB'
+};
+const sizes32 = {
+  '1507':'~2.8GB', '1511':'~2.9GB', '1607':'~3.0GB', '1703':'~3.1GB',
+  '1709':'~3.2GB', '1803':'~3.3GB', '1809':'~3.4GB', '1903':'~3.5GB',
+  '1909':'~3.5GB', '2004':'~3.6GB', '20h2':'~3.7GB', '21h1':'~3.7GB',
+  '21h2':'~3.8GB'
+};
+const arch = {
+  w10h64:'64-Bit (x64)', w10p64:'64-Bit (x64)', w10e64:'64-Bit (x64)',
+  w10h32:'32-Bit (x86)', w10p32:'32-Bit (x86)', w10e32:'32-Bit (x86)',
+};
+function updateSpecs(select, id) {
+  const ver = select.value;
+  const is64 = id.includes('64');
+  const size = is64 ? sizes64[ver] : sizes32[ver];
+  const el = document.getElementById(id);
+  el.innerHTML = `
+    <div><span class="spec-label">Build:</span> ${builds[ver] || '—'}</div>
+    <div><span class="spec-label">Arch:</span> ${arch[id]}</div>
+    <div><span class="spec-label">Language:</span> English</div>
+    <div><span class="spec-label">Size:</span> ${size || '—'}</div>
+  `;
+}
+</script>
+
+</body>
+</html>

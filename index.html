@@ -16,7 +16,7 @@
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 8px 16px rgba(0,0,0,.25);
-    background: linear-gradient(#dcecff, #a9c8f2);
+    background: transparent;
 }
 .carousel-track { position: relative; height: 260px; }
 .slide {
@@ -25,68 +25,155 @@
     opacity: 0;
     transform: translateX(40px);
     transition: opacity 0.8s ease, transform 0.8s ease;
+    z-index: 1;
 }
 .slide.active {
     opacity: 1;
     transform: translateX(0);
-    z-index: 2;
+    z-index: 10;
 }
 .slide.exit {
     opacity: 0;
     transform: translateX(-40px);
 }
-.slide-text { padding: 70px; }
+.slide-text { padding: 70px; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.slide.active .slide-text { opacity: 1; transform: translateY(0); }
 .slide-text h1 { font-size: 36px; font-weight: 300; color: #003e7e; }
+
 .aero-btn {
     position: relative;
     display: inline-block;
-    padding: 8px 20px;
-    border-radius: 4px;
-    border: 1px solid #3b6ea5;
-    background: linear-gradient(#9dd2ff, #3a7bd5 45%, #2b62b9 46%, #1e4f9c);
-    color: white;
-    font-weight: 600;
+    padding: 0;
+    border-radius: 3px;
     text-decoration: none;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.8),
-                inset 0 -1px 0 rgba(0,0,0,.25),
-                0 1px 2px rgba(0,0,0,.4);
     overflow: hidden;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    box-shadow:
+        0 0 0 1px #5b9bd5,
+        0 0 0 2px #b8d6f0,
+        0 2px 4px rgba(0,0,0,0.3);
+    transition: box-shadow 0.15s ease, transform 0.1s ease;
 }
-.aero-btn::before {
+.aero-btn-inner {
+    display: block;
+    padding: 8px 22px;
+    background: linear-gradient(
+        #e8f4ff 0%,
+        #c2ddf7 49%,
+        #92bfe8 50%,
+        #b8d8f5 100%
+    );
+    border-radius: 3px;
+    position: relative;
+    transition: background 0.15s ease;
+    text-align: center;
+}
+.aero-btn-inner::before {
     content: "";
     position: absolute;
     top: 1px; left: 1px; right: 1px;
-    height: 50%;
-    background: linear-gradient(rgba(255,255,255,.85), rgba(255,255,255,.15));
+    height: 48%;
+    background: linear-gradient(rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.4) 100%);
+    border-radius: 2px 2px 0 0;
+    pointer-events: none;
+}
+.aero-btn span {
+    position: relative;
+    z-index: 2;
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a3a5c;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+    white-space: nowrap;
+}
+.aero-btn:hover {
+    box-shadow:
+        0 0 0 1px #3a7fc1,
+        0 0 0 2px #7ab8e8,
+        0 0 8px rgba(100,170,240,0.6),
+        0 2px 4px rgba(0,0,0,0.3);
+}
+.aero-btn:hover .aero-btn-inner {
+    background: linear-gradient(
+        #d0eaff 0%,
+        #9ecbf0 49%,
+        #5fa8e0 50%,
+        #8dc5ee 100%
+    );
+}
+.aero-btn:hover .aero-btn-inner::before {
+    background: linear-gradient(rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.5) 100%);
+}
+.aero-btn:active {
+    box-shadow:
+        0 0 0 1px #2a5f9a,
+        0 0 0 2px #5a96cc,
+        0 1px 2px rgba(0,0,0,0.4);
+    transform: translateY(1px);
+}
+.aero-btn:active .aero-btn-inner {
+    background: linear-gradient(
+        #7ab0d8 0%,
+        #5090c8 49%,
+        #3a78b8 50%,
+        #6098cc 100%
+    );
+}
+.aero-btn:active .aero-btn-inner::before {
+    background: linear-gradient(rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.1) 100%);
 }
 .aero-btn::after {
     content: "";
     position: absolute;
     inset: 0;
-    background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,.6) 50%, transparent 70%);
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.4) 50%, transparent 70%);
     transform: translateX(-120%);
-    animation: sweep 6s infinite;
+    animation: sweep 8s infinite;
+    pointer-events: none;
+    z-index: 5;
+    border-radius: 3px;
 }
 @keyframes sweep {
-    0%,70% { transform: translateX(-120%); }
-    100% { transform: translateX(120%); }
+    0%, 60% { transform: translateX(-120%); }
+    100%     { transform: translateX(120%); }
 }
+
+/* Arrow buttons */
 .arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 36px; height:36px;
-    border-radius:50%;
-    border:1px solid #6b8fb8;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid #6b8fb8;
     background: linear-gradient(#ffffff, #cfddee);
     box-shadow: inset 0 1px 0 #fff, 0 2px 4px rgba(0,0,0,.4);
-    cursor:pointer;
+    cursor: pointer;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #003e7e;
+    transition: all 0.2s ease;
 }
-.arrow.left { left:10px; }
-.arrow.right { right:10px; }
-.carousel-dots { text-align:center; margin-top:12px; }
-.dot { width:11px; height:11px; border-radius:50%; background:#9db8dd; display:inline-block; margin:0 4px; cursor:pointer; }
-.dot.active { background:#2b62b9; }
+.arrow.left { left: 10px; }
+.arrow.right { right: 10px; }
+.arrow:hover {
+    background: linear-gradient(#f0f8ff, #a9c8f2);
+    box-shadow: inset 0 1px 0 #fff, 0 0 10px rgba(66,133,244,0.7), 0 2px 4px rgba(0,0,0,.4);
+}
+.arrow:active {
+    background: linear-gradient(#a9c8f2, #7aa4d6);
+    transform: translateY(calc(-50% + 1px));
+}
+
+.carousel-dots { text-align: center; margin-top: 12px; }
+.dot { width: 11px; height: 11px; border-radius: 50%; background: #9db8dd; display: inline-block; margin: 0 4px; cursor: pointer; }
+.dot.active { background: #2b62b9; }
 
 /* MAIN CONTENT BELOW CAROUSEL */
 .main-content {
@@ -96,11 +183,9 @@
     margin: 40px auto;
     gap: 20px;
 }
-
-/* LATEST VIDEO & SUB COUNT BLOCKS */
 .content-block {
     width: 48%;
-    background: linear-gradient(#ffffff,#f1f1f1);
+    background: linear-gradient(#ffffff, #f1f1f1);
     border: 1px solid #c2c2c2;
     border-radius: 6px;
     padding: 20px;
@@ -116,22 +201,179 @@
     color: #003e7e;
     margin-bottom: 15px;
 }
-
-/* YOUTUBE IFRAME */
 .latest-video iframe {
     width: 100%;
     height: 270px;
     border: none;
     border-radius: 6px;
 }
-
-/* SUB COUNT IFRAME */
 .sub-count iframe {
     width: 100%;
     height: 80px;
     border: 0;
     border-radius: 6px;
 }
+
+.slide-bg-icon {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 220px;
+    width: auto;
+    max-width: 260px;
+    opacity: 0.18;
+    filter: blur(0.5px) grayscale(20%);
+    pointer-events: none;
+    user-select: none;
+    transition: opacity 0.8s ease;
+    z-index: 1;
+}
+.slide.active .slide-bg-icon {
+    opacity: 0.22;
+}
+.slide-welcome   { background: linear-gradient(135deg, #dcecff, #a9c8f2); }
+.slide-socials   { background: linear-gradient(135deg, #c8dcf5, #8ab4e8); }
+.slide-downloads { background: linear-gradient(135deg, #c8e8d0, #8ac8a0); }
+.slide-tech      { background: linear-gradient(135deg, #d0d8e8, #a0afc8); }
+.slide-about     { background: linear-gradient(135deg, #c8e8e8, #8ac8c8); }
+
+.slide-text h1 { color: #003e7e; }
+.slide-text p  { color: #333333; }
+
+.ms-panel {
+    width: 980px;
+    margin: 0 auto 40px;
+    display: flex;
+    gap: 0;
+    background: linear-gradient(#ffffff, #f1f1f1);
+    border: 1px solid #c2c2c2;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    overflow: hidden;
+}
+.ms-sidebar {
+    width: 200px;
+    flex-shrink: 0;
+    background: linear-gradient(#eef4fb, #dce8f5);
+    border-right: 1px solid #c2c2c2;
+    padding: 10px 0;
+}
+.ms-sidebar-item {
+    display: block;
+    padding: 10px 20px;
+    font-size: 13px;
+    color: #1a1a1a;
+    text-decoration: none;
+    border-right: 3px solid transparent;
+    border-bottom: 1px solid #dce8f4;
+    transition: all 0.15s ease;
+    cursor: pointer;
+    background: none;
+    width: 100%;
+    text-align: right;
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    outline: none;
+}
+.ms-sidebar-item:hover {
+    background: linear-gradient(#ffffff, #e8f1fb);
+    color: #003e7e;
+}
+.ms-sidebar-item.active {
+    color: #003e7e;
+    font-weight: bold;
+    border-right: 3px solid #0072c6;
+    background: linear-gradient(#ffffff, #dce8f5);
+}
+.ms-content {
+    flex: 1;
+    display: flex;
+    gap: 0;
+}
+.ms-col {
+    flex: 1;
+    padding: 20px 24px;
+    border-right: 1px solid #e0e8f0;
+}
+.ms-col:last-child { border-right: none; }
+.ms-col-title {
+    font-size: 18px;
+    font-weight: 300;
+    color: #003e7e;
+    margin: 0 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #d0e0f0;
+}
+.ms-featured {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e8f0f8;
+}
+.ms-featured img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+.ms-featured-text a {
+    font-size: 13px;
+    font-weight: bold;
+    color: #0072c6;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 4px;
+}
+.ms-featured-text a:hover { text-decoration: underline; }
+.ms-featured-text p {
+    font-size: 12px;
+    color: #444;
+    margin: 4px 0 0;
+    line-height: 1.4;
+}
+.ms-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.ms-list li {
+    padding: 6px 0;
+    border-bottom: 1px solid #eef4fb;
+    font-size: 12px;
+}
+.ms-list li:last-child { border-bottom: none; }
+.ms-list li a {
+    font-size: 13px;
+    font-weight: bold;
+    color: #0072c6;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 2px;
+}
+.ms-list li a:hover { text-decoration: underline; }
+.ms-list li p {
+    margin: 0;
+    color: #555;
+    font-size: 12px;
+    line-height: 1.4;
+}
+.ms-list li .ms-link {
+    font-size: 11px;
+    color: #0072c6;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    margin-top: 3px;
+}
+.ms-list li .ms-link::before {
+    content: "🔵";
+    font-size: 9px;
+}
+.ms-list li .ms-link:hover { text-decoration: underline; }
+.ms-tab-panel { display: none; }
+.ms-tab-panel.active { display: flex; }
 </style>
 </head>
 <body>
@@ -160,41 +402,52 @@
     <button class="arrow left">&#9664;</button>
     <button class="arrow right">&#9654;</button>
     <div class="carousel-track">
-      <div class="slide active">
+
+      <div class="slide slide-welcome active">
+        <img src="logo/7web-logo.png" class="slide-bg-icon" alt="">
         <div class="slide-text">
           <h1>Welcome to 7web</h1>
-          <p>Your tech & content hub.</p>
-          <a href="about.html" class="aero-btn">Learn More</a>
+          <p>Your tech &amp; content hub.</p>
+          <a href="about.html" class="aero-btn"><div class="aero-btn-inner"><span>Learn More</span></div></a>
         </div>
       </div>
-      <div class="slide">
+
+      <div class="slide slide-socials">
+        <img src="icons/tiktok.png" class="slide-bg-icon" alt="">
         <div class="slide-text">
           <h1>Socials</h1>
           <p>Follow me online: TikTok, YouTube, X.</p>
-          <a href="socials.html" class="aero-btn">Go to Socials</a>
+          <a href="socials.html" class="aero-btn"><div class="aero-btn-inner"><span>Go to Socials</span></div></a>
         </div>
       </div>
-      <div class="slide">
+
+      <div class="slide slide-downloads">
+        <img src="icons/iso.png" class="slide-bg-icon" alt="">
         <div class="slide-text">
           <h1>Downloads</h1>
           <p>ISO, software, wallpapers.</p>
-          <a href="downloads.html" class="aero-btn">Go to Downloads</a>
+          <a href="downloads.html" class="aero-btn"><div class="aero-btn-inner"><span>Go to Downloads</span></div></a>
         </div>
       </div>
-      <div class="slide">
+
+      <div class="slide slide-tech">
+        <img src="icons/console.png" class="slide-bg-icon" alt="">
         <div class="slide-text">
           <h1>Tech Collection</h1>
           <p>My curated tech content.</p>
-          <a href="techcollection.html" class="aero-btn">See Tech Collection</a>
+          <a href="techcollection.html" class="aero-btn"><div class="aero-btn-inner"><span>See Tech Collection</span></div></a>
         </div>
       </div>
-      <div class="slide">
+
+      <div class="slide slide-about">
+        <img src="icons/about.png" class="slide-bg-icon" alt="">
         <div class="slide-text">
           <h1>About 7web</h1>
-          <p>New design, branding & v1.8 release log.</p>
-          <a href="about.html" class="aero-btn">Learn More</a>
+          <p>New design, branding &amp; v1.8 release log.</p>
+          <a href="about.html" class="aero-btn"><div class="aero-btn-inner"><span>Learn More</span></div></a>
         </div>
       </div>
+
     </div>
   </div>
   <div class="carousel-dots">
@@ -208,16 +461,299 @@
 
 <!-- MAIN CONTENT BLOCKS -->
 <div class="main-content">
-  <!-- Latest YouTube Video -->
   <div class="content-block latest-video">
     <h2>Latest YouTube Video</h2>
-    <iframe src="https://www.youtube.com/embed/C6WQQSk8zU8" allowfullscreen></iframe>
+    <div style="
+        width:100%;
+        height:270px;
+        border-radius:6px;
+        background:linear-gradient(#e8f1fb, #d0e4f8);
+        border:1px solid #c2d8f0;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        gap:10px;
+        color:#003e7e;
+        text-align:center;
+        padding:20px;
+        box-sizing:border-box;
+    ">
+        <div style="font-size:40px;">📺</div>
+        <div style="font-size:15px;font-weight:600;">YouTube Embed Temporarily Unavailable</div>
+        <div style="font-size:12px;color:#555;max-width:300px;line-height:1.5;">
+            Due to YouTube restrictions the latest video cannot be embedded at this time.
+            Hopefully this will be fixed in a future update!
+        </div>
+        <a href="https://www.youtube.com/@2009Windows7RTM"
+           target="_blank"
+           style="
+               margin-top:6px;
+               font-size:13px;
+               color:#ffffff;
+               background:linear-gradient(#ff4444,#cc0000);
+               padding:7px 18px;
+               border-radius:4px;
+               text-decoration:none;
+               font-weight:600;
+           ">
+            ▶ Visit Channel on YouTube
+        </a>
+    </div>
+    <p style="margin-top:8px;font-size:12px;color:#666;">
+      Can't see the video?
+      <a href="https://www.youtube.com/@2009Windows7RTM"
+         target="_blank"
+         style="color:#0072c6;">
+        Visit the channel directly
+      </a>
+    </p>
   </div>
-
-  <!-- Live Sub Count -->
   <div class="content-block sub-count">
     <h2>Live Subscriber Count</h2>
     <iframe src="https://livecounts.io/embed/youtube-live-subscriber-counter/UCTLa3GkXTXTqiIRMGwK8gYA"></iframe>
+  </div>
+</div>
+
+<div class="ms-panel">
+  <div class="ms-sidebar">
+    <button class="ms-sidebar-item active" onclick="switchTab('highlights', event)">Highlights</button>
+    <button class="ms-sidebar-item" onclick="switchTab('downloads', event)">Latest Downloads</button>
+    <button class="ms-sidebar-item" onclick="switchTab('tech', event)">Tech Collection</button>
+    <button class="ms-sidebar-item" onclick="switchTab('socials', event)">Socials ▶</button>
+    <button class="ms-sidebar-item" onclick="switchTab('about', event)">About 7web</button>
+  </div>
+  <div class="ms-content">
+
+    <!-- HIGHLIGHTS -->
+    <div class="ms-tab-panel active" id="tab-highlights">
+      <div class="ms-col">
+        <div class="ms-col-title">At Home</div>
+        <div class="ms-featured">
+          <img src="icons/laptop.png" alt="Laptop">
+          <div class="ms-featured-text">
+            <a href="tech-collection/laptops.html">Is your PC ready?</a>
+            <p>Check out the full laptop collection and see what hardware is being used</p>
+          </div>
+        </div>
+        <ul class="ms-list">
+          <li>
+            <a href="downloads/iso/official-windows-iso/windows-7.html">Download Windows 7</a>
+            <p>Get the classic Windows 7 ISO — multiple editions available</p>
+            <a href="downloads/iso/official-windows-iso/windows-7.html" class="ms-link">Get Windows 7 today</a>
+          </li>
+          <li>
+            <a href="tech-collection/laptops.html">Laptop Collection</a>
+            <p>Browse the full collection of laptops from vintage to modern</p>
+          </li>
+          <li>
+            <a href="downloads/software/official-software.html">Download Free Software</a>
+            <p>Chrome, Discord, CPU-Z and many more — all in one place</p>
+          </li>
+          <li>
+            <a href="downloads/wallpaper-download.html">Wallpaper Downloads</a>
+            <p>Download wallpapers for your desktop</p>
+          </li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-title">Tech & Content</div>
+        <div class="ms-featured">
+          <img src="icons/console.png" alt="Console">
+          <div class="ms-featured-text">
+            <a href="tech-collection/consoles.html">Console Collection</a>
+            <p>Xbox 360 Slim, Wii U, Nintendo 2DS and more</p>
+          </div>
+        </div>
+        <ul class="ms-list">
+          <li>
+            <a href="tech-collection/phones.html">Phone Collection</a>
+            <p>From iPhone 4 to the Oppo Find X8 Ultra — see the full collection</p>
+          </li>
+          <li>
+            <a href="tech-collection/desktops.html">Desktop Collection</a>
+            <p>Custom built desktop with Intel i7-6700K and GTX 1080 Ti</p>
+          </li>
+          <li>
+            <a href="socials.html">Follow on Socials</a>
+            <p>TikTok, YouTube and X — stay up to date with latest content</p>
+            <a href="socials.html" class="ms-link">Visit Socials page</a>
+          </li>
+          <li>
+            <a href="about.html">About 7web</a>
+            <p>Learn about the site, its design and version history</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- LATEST DOWNLOADS -->
+    <div class="ms-tab-panel" id="tab-downloads">
+      <div class="ms-col">
+        <div class="ms-col-title">ISO Downloads</div>
+        <ul class="ms-list">
+          <li>
+            <a href="downloads/iso/official-windows-iso/windows-11.html">Windows 11 ISO</a>
+            <p>Latest version — Build 26100 (24H2)</p>
+            <a href="downloads/iso/official-windows-iso/windows-11.html" class="ms-link">Download Windows 11</a>
+          </li>
+          <li>
+            <a href="downloads/iso/official-windows-iso/windows-10.html">Windows 10 ISO</a>
+            <p>All versions from 1507 RTM to 22H2</p>
+          </li>
+          <li>
+            <a href="downloads/iso/official-windows-iso/windows-7.html">Windows 7 ISO</a>
+            <p>RTM and SP1 — Home Premium, Pro, Ultimate</p>
+          </li>
+          <li>
+            <a href="downloads/iso/official-windows-iso/windows-vista.html">Windows Vista ISO</a>
+            <p>RTM, SP1 and SP2 available</p>
+          </li>
+          <li>
+            <a href="downloads/iso/official-windows-iso/windows-xp.html">Windows XP ISO</a>
+            <p>Home, Professional and Media Center editions</p>
+          </li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-title">Software Downloads</div>
+        <ul class="ms-list">
+          <li>
+            <a href="downloads/software/official-software.html">Official Software</a>
+            <p>Chrome, Firefox, Discord, Steam, OBS and more</p>
+            <a href="downloads/software/official-software.html" class="ms-link">Browse all software</a>
+          </li>
+          <li>
+            <a href="downloads/software/official-software.html">Virtualisation Tools</a>
+            <p>VMware Workstation Pro and VirtualBox</p>
+          </li>
+          <li>
+            <a href="downloads/software/official-software.html">System Info Tools</a>
+            <p>CPU-Z, GPU-Z and HWiNFO</p>
+          </li>
+          <li>
+            <a href="downloads/software/official-software.html">Creative Software</a>
+            <p>Adobe Creative Cloud and GIMP</p>
+          </li>
+          <li>
+            <a href="downloads/wallpaper-download.html">Wallpapers</a>
+            <p>Wallpaper collection for your desktop</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- TECH COLLECTION -->
+    <div class="ms-tab-panel" id="tab-tech">
+      <div class="ms-col">
+        <div class="ms-col-title">Laptops & Desktops</div>
+        <div class="ms-featured">
+          <img src="tech-collection/laptop-icons/msi-sword-16-hx-b14v.png" alt="MSI Laptop">
+          <div class="ms-featured-text">
+            <a href="tech-collection/laptops.html">MSI Sword 16 HX B14V</a>
+            <p>Main laptop — i7-14700HX · RTX 4060 · Windows 10 & Classic 7 dual boot</p>
+          </div>
+        </div>
+        <ul class="ms-list">
+          <li>
+            <a href="tech-collection/laptops.html">Full Laptop Collection</a>
+            <p>MSI, HP, ASUS, Dell, Acer and MacBook Pro models</p>
+          </li>
+          <li>
+            <a href="tech-collection/desktops.html">Custom Desktop</a>
+            <p>i7-6700K · GTX 1080 Ti · Windows 7 & 10 dual boot</p>
+          </li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-title">Phones & Consoles</div>
+        <div class="ms-featured">
+          <img src="icons/phone.png" alt="Phone">
+          <div class="ms-featured-text">
+            <a href="tech-collection/phones.html">Oppo Find X8 Ultra</a>
+            <p>Main phone — Snapdragon 8 Elite · ColorOS 16</p>
+          </div>
+        </div>
+        <ul class="ms-list">
+          <li>
+            <a href="tech-collection/phones.html">Full Phone Collection</a>
+            <p>iPhones, Samsung Galaxy S4 Zoom and more</p>
+          </li>
+          <li>
+            <a href="tech-collection/consoles.html">Console Collection</a>
+            <p>Xbox 360 Slim, Wii U and Nintendo 2DS</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SOCIALS -->
+    <div class="ms-tab-panel" id="tab-socials">
+      <div class="ms-col">
+        <div class="ms-col-title">Follow Online</div>
+        <ul class="ms-list">
+          <li>
+            <a href="socials.html">YouTube</a>
+            <p>Watch the latest videos — @2009Windows7RTM</p>
+            <a href="socials.html" class="ms-link">Visit YouTube channel</a>
+          </li>
+          <li>
+            <a href="socials.html">TikTok</a>
+            <p>Short form tech content and clips</p>
+            <a href="socials.html" class="ms-link">Visit TikTok</a>
+          </li>
+          <li>
+            <a href="socials.html">X (Twitter)</a>
+            <p>Updates, thoughts and tech news</p>
+            <a href="socials.html" class="ms-link">Visit X</a>
+          </li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-title">Latest Content</div>
+        <ul class="ms-list">
+          <li>
+            <a href="index.html">Latest YouTube Video</a>
+            <p>Check the home page for the most recent upload</p>
+            <a href="index.html" class="ms-link">Watch now</a>
+          </li>
+          <li>
+            <a href="index.html">Live Subscriber Count</a>
+            <p>See the live subscriber count on the home page</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <div class="ms-tab-panel" id="tab-about">
+      <div class="ms-col">
+        <div class="ms-col-title">About 7web</div>
+        <ul class="ms-list">
+          <li>
+            <a href="about.html">What is 7web?</a>
+            <p>A Windows 7 styled personal website covering tech, downloads and content</p>
+          </li>
+          <li>
+            <a href="about.html">Version History</a>
+            <p>See the full changelog and design history of 7web</p>
+          </li>
+          <li>
+            <a href="about.html">Site Design</a>
+            <p>Built with pure HTML and CSS — no frameworks — Windows 7 Aero inspired</p>
+          </li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-title">Quick Links</div>
+        <ul class="ms-list">
+          <li><a href="downloads.html">Downloads</a><p>ISO, Software and Wallpapers</p></li>
+          <li><a href="techcollection.html">Tech Collection</a><p>Laptops, Phones, Consoles and Desktops</p></li>
+          <li><a href="socials.html">Socials</a><p>YouTube, TikTok and X</p></li>
+        </ul>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -227,27 +763,41 @@
 </div>
 
 <script>
-// CAROUSEL SCRIPT
 const slides = document.querySelectorAll(".slide");
 const dots = document.querySelectorAll(".dot");
 const prev = document.querySelector(".arrow.left");
 const next = document.querySelector(".arrow.right");
 let index = 0;
-function showSlide(newIndex){
-    slides[index].classList.remove("active");
-    slides[index].classList.add("exit");
+let isAnimating = false;
+
+function showSlide(newIndex) {
+    if (isAnimating) return;
+    isAnimating = true;
+    const prevSlide = slides[index];
+    prevSlide.classList.remove("active");
+    prevSlide.classList.add("exit");
+    setTimeout(() => prevSlide.classList.remove("exit"), 800);
     index = newIndex;
-    if(index < 0) index = slides.length - 1;
-    if(index >= slides.length) index = 0;
-    slides[index].classList.remove("exit");
+    if (index < 0) index = slides.length - 1;
+    if (index >= slides.length) index = 0;
+    slides[index].classList.remove("exit", "active");
     slides[index].classList.add("active");
     dots.forEach(d => d.classList.remove("active"));
     dots[index].classList.add("active");
+    setTimeout(() => isAnimating = false, 800);
 }
+
 next.onclick = () => showSlide(index + 1);
 prev.onclick = () => showSlide(index - 1);
 dots.forEach(dot => dot.onclick = () => showSlide(parseInt(dot.dataset.index)));
 setInterval(() => showSlide(index + 1), 6000);
+
+function switchTab(tab, event) {
+    document.querySelectorAll('.ms-sidebar-item').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.ms-tab-panel').forEach(p => p.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+    document.getElementById('tab-' + tab).classList.add('active');
+}
 </script>
 
 </body>

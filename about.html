@@ -11,7 +11,7 @@
     justify-content:center; 
     gap:20px; 
     margin:40px auto; 
-    width:980px; 
+    width:980px;
 }
 .collection-item { 
     display:flex; 
@@ -38,16 +38,66 @@
     color:#003e7e; 
     cursor:default;
 }
-.version-text { 
-    font-weight:normal; 
-    color:#1a1a1a; 
+.version-text {
+    font-weight:normal;
+    color:#1a1a1a;
     margin-left:10px;
 }
-.version-text ul { 
-    margin:5px 0 5px 20px; 
+.version-text ul {
+    margin:5px 0 5px 20px;
 }
-.version-text p { 
-    margin:8px 0; 
+.version-text p {
+    margin:8px 0;
+}
+.version-entry {
+    background: linear-gradient(#ffffff, #f8fbff);
+    border: 1px solid #c2c2c2;
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.version-entry:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    background: linear-gradient(#f9f9f9, #eaeaea);
+}
+.version-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #d0e0f0;
+}
+.version-badge {
+    background: linear-gradient(#9dd2ff, #3a7bd5 45%, #2b62b9 46%, #1e4f9c);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 12px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.6);
+}
+.version-date {
+    font-size: 13px;
+    color: #666;
+}
+.version-desc {
+    font-size: 14px;
+    color: #333;
+    margin: 0 0 10px;
+}
+.version-changes {
+    margin: 0 0 0 20px;
+    padding: 0;
+    font-size: 13px;
+    color: #444;
+    line-height: 1.8;
+}
+.version-changes li {
+    margin-bottom: 4px;
 }
 </style>
 </head>
@@ -74,6 +124,43 @@
 <h1 style="text-align:center; margin-top:40px;">About 7web</h1>
 
 <div class="collection-container">
+
+  <!-- Beta v1.9 -->
+  <div class="version-entry">
+    <div class="version-header">
+      <span class="version-badge">Beta v1.9</span>
+      <span class="version-date">April 20–24, 2026 · May 24, 2026</span>
+    </div>
+    <div class="version-content">
+      <p class="version-desc">Major content and feature update — built collaboratively with Claude AI.</p>
+      <ul class="version-changes">
+        <li style="font-weight:bold;color:#003e7e;list-style:none;margin-left:-20px;margin-bottom:6px;">April 20–24, 2026</li>
+        <li>Added <strong>Phone Collection</strong> page — with iOS/Android OS icons, iCloud Locked badges and colour labels</li>
+        <li>Added <strong>Console Collection</strong> and <strong>Desktop Collection</strong> pages</li>
+        <li>Updated <strong>Laptop Collection</strong> — added new laptops, removed others, updated OS entries and badge changes</li>
+        <li>Updated <strong>Windows ISO Download pages</strong> for all major Windows versions — each with OS-accurate themed styling and version dropdown selectors showing RTM/SP/update builds</li>
+        <li>Updated <strong>Official Windows ISO Hub</strong> — now split into Modern, Legacy and Classic sections — Classic (Windows 2000, ME, 98, 95, 3.1) is Coming Soon</li>
+        <li>Added <strong>Official Software Downloads</strong> page with 40+ software titles across multiple categories</li>
+        <li>Software page features <strong>Win7 Aero style filter tabs</strong> by category</li>
+        <li>Created <strong>Modded Software page</strong> with disclaimer banner — includes jailbreak tools, Windows mod tools and community trusted software — with MODDED, PATCHED and TRUSTED badges and filter categories</li>
+        <li>Updated <strong>Software Downloads Hub</strong> — Official Software, Older Software and Modded Software sections</li>
+        <li>Updated <strong>Wallpaper Downloads</strong> page — sections added and icons fixed — note: no wallpapers uploaded yet, Coming Soon</li>
+        <li>Redesigned <strong>Carousel</strong> — accurate Windows 7 Aero style buttons, Longhorn-style faded background icons and unique gradient per slide</li>
+        <li>Added <strong>Microsoft 2010 style tabbed panel</strong> on home page — note: not 1:1 accurate to the original, may be improved in a future update</li>
+        <li>Updated <strong>Tech Collection Hub</strong> — added Desktop Collection card</li>
+        <li>Fixed <strong>carousel JS bug</strong> — slide stacking on rapid clicks now prevented</li>
+        <li>Fixed various <strong>broken image paths, link paths and navbar styling</strong> across multiple pages</li>
+        <li>Removed Coming Soon badges from cards that now have real pages — Wallpaper pages remain Coming Soon</li>
+        <li>⚠️ <strong>Known Issue:</strong> Latest YouTube Video embed currently not working due to YouTube API restrictions — replaced with notice and direct channel link — hopefully fixed in a future update!</li>
+        <li style="font-weight:bold;color:#003e7e;list-style:none;margin-left:-20px;margin-top:10px;margin-bottom:6px;">May 24, 2026</li>
+        <li>Updated <strong>Windows 7 ISO page</strong> — OEM RTM download links added for all 8 editions (Home Basic, Home Premium, Professional, Ultimate — 32-bit and 64-bit), RTM set as default version, SP1 shown as Not Available, download button disables correctly when no link exists</li>
+        <li>Updated <strong>Laptop Collection</strong> — removed ASUS ROG G74SX, removed MacBook Pro A1707 1TB (Radeon Pro 560), changed remaining 256GB MacBook Pro A1707 badge from COLLECTION to SELLING</li>
+        <li>Updated <strong>Phone Collection</strong> — removed iCloud Locked iPhone 7, replaced Oppo Find X8 Ultra featured phone with Apple iPhone 13 Pro (Sierra Blue · iOS 26) as new main phone</li>
+        <li>Added <strong>Setup Guides</strong> — MSI Sword 16 HX B14V personal setup guide, Custom Desktop landing page with separate Windows 7 guide (9 steps) and Windows 10 placeholder</li>
+        <li>Made featured laptop and desktop images clickable — link to their respective setup guides with hover opacity effect</li>
+      </ul>
+    </div>
+  </div>
 
   <!-- Beta v1.8.1.5 -->
   <div class="collection-item">

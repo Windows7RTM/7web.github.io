@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Windows Vista ISO Downloads – 7web</title>
+<link rel="stylesheet" href="../../../style.css">
+<style>
+html, body {
+    background: linear-gradient(#eef4fb, #cfddee) !important;
+    min-height: 100vh;
+}
+
+.header {
+    background: linear-gradient(
+        #c8e8e8 0%,
+        #a0d0d8 40%,
+        #78b8c8 41%,
+        #5aa0b8 100%
+    ) !important;
+    border-bottom: 1px solid #4a8898 !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.6) !important;
+}
+
+/* Fix nav links to match other pages */
+.nav a {
+    color: #002030 !important;
+    border: 1px solid transparent !important;
+}
+.nav a:hover {
+    color: #001020 !important;
+    border: 1px solid rgba(255,255,255,0.6) !important;
+    background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.2)) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.7) !important;
+}
+.nav a.active {
+    color: #001020 !important;
+    border: 1px solid rgba(255,255,255,0.5) !important;
+    background: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.15)) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6) !important;
+}
+.logo span { color: #002030 !important; }
+
+.page-header {
+    text-align: center;
+    padding: 40px 0 20px;
+}
+.page-header img {
+    height: 64px;
+    margin-bottom: 10px;
+}
+.page-header h1 {
+    font-size: 36px;
+    font-weight: 300;
+    color: #003e7e;
+    margin: 0;
+}
+.page-header p {
+    color: #555;
+    font-size: 15px;
+    margin-top: 8px;
+}
+
+.iso-container {
+    width: 980px;
+    margin: 30px auto 60px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.iso-card {
+    background: linear-gradient(#ffffff, #f1f1f1);
+    border: 1px solid #c2c2c2;
+    border-radius: 6px;
+    padding: 24px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    transition: .2s;
+}
+.iso-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+.iso-card h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #003e7e;
+    margin: 0 0 12px;
+}
+
+.version-select-wrap { margin-bottom: 14px; }
+.version-select-wrap label {
+    font-size: 12px;
+    font-weight: bold;
+    color: #555;
+    display: block;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.version-select {
+    width: 100%;
+    padding: 6px 10px;
+    border: 1px solid #9db8dd;
+    border-radius: 3px;
+    background: linear-gradient(#ffffff, #e8f1fb);
+    color: #003e7e;
+    font-size: 13px;
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23003e7e'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 28px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.9);
+}
+.version-select:focus {
+    outline: none;
+    border-color: #3b6ea5;
+    box-shadow: 0 0 4px rgba(66,133,244,0.4);
+}
+
+.spec-info {
+    font-size: 13px;
+    color: #333;
+    margin-bottom: 16px;
+    background: linear-gradient(#f8fbff, #eef4fb);
+    border: 1px solid #d0e0f0;
+    border-radius: 4px;
+    padding: 10px 12px;
+}
+.spec-info div { margin-bottom: 4px; }
+.spec-info div:last-child { margin-bottom: 0; }
+.spec-label { font-weight: 600; color: #003e7e; }
+
+.section-label {
+    width: 980px;
+    margin: 10px auto 10px;
+    color: #003e7e;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.aero-btn {
+    position: relative;
+    display: inline-block;
+    padding: 0;
+    border-radius: 3px;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    box-shadow:
+        0 0 0 1px #5b9bd5,
+        0 0 0 2px #b8d6f0,
+        0 2px 4px rgba(0,0,0,0.3);
+    transition: box-shadow 0.15s ease, transform 0.1s ease;
+}
+.aero-btn-inner {
+    display: block;
+    padding: 8px 0;
+    width: 100%;
+    background: linear-gradient(
+        #e8f4ff 0%,
+        #c2ddf7 49%,
+        #92bfe8 50%,
+        #b8d8f5 100%
+    );
+    border-radius: 3px;
+    position: relative;
+    transition: background 0.15s ease;
+    text-align: center;
+}
+.aero-btn-inner::before {
+    content: "";
+    position: absolute;
+    top: 1px; left: 1px; right: 1px;
+    height: 48%;
+    background: linear-gradient(rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.4) 100%);
+    border-radius: 2px 2px 0 0;
+    pointer-events: none;
+}
+.aero-btn span {
+    position: relative;
+    z-index: 2;
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a3a5c;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+    white-space: nowrap;
+}
+.aero-btn:hover {
+    box-shadow:
+        0 0 0 1px #3a7fc1,
+        0 0 0 2px #7ab8e8,
+        0 0 8px rgba(100,170,240,0.6),
+        0 2px 4px rgba(0,0,0,0.3);
+}
+.aero-btn:hover .aero-btn-inner {
+    background: linear-gradient(
+        #d0eaff 0%,
+        #9ecbf0 49%,
+        #5fa8e0 50%,
+        #8dc5ee 100%
+    );
+}
+.aero-btn:hover .aero-btn-inner::before {
+    background: linear-gradient(rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.5) 100%);
+}
+.aero-btn:active {
+    box-shadow:
+        0 0 0 1px #2a5f9a,
+        0 0 0 2px #5a96cc,
+        0 1px 2px rgba(0,0,0,0.4);
+    transform: translateY(1px);
+}
+.aero-btn:active .aero-btn-inner {
+    background: linear-gradient(
+        #7ab0d8 0%,
+        #5090c8 49%,
+        #3a78b8 50%,
+        #6098cc 100%
+    );
+}
+.aero-btn:active .aero-btn-inner::before {
+    background: linear-gradient(rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.1) 100%);
+}
+.aero-btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.4) 50%, transparent 70%);
+    transform: translateX(-120%);
+    animation: sweep 8s infinite;
+    pointer-events: none;
+    z-index: 5;
+    border-radius: 3px;
+}
+@keyframes sweep {
+    0%, 60% { transform: translateX(-120%); }
+    100%     { transform: translateX(120%); }
+}
+
+.footer {
+    background: linear-gradient(
+        #c8e8e8 0%,
+        #a0d0d8 40%,
+        #78b8c8 41%,
+        #5aa0b8 100%
+    ) !important;
+    color: #002030 !important;
+    border-top: 1px solid #4a8898 !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6) !important;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="logo" style="display:flex;align-items:center;gap:8px;">
+      <a href="../../../index.html" style="display:flex;align-items:center;text-decoration:none;">
+        <img src="../../../logo/7web-logo.png" style="height:40px;">
+        <span style="font-size:24px;font-weight:bold;">7web</span>
+      </a>
+    </div>
+    <div class="nav">
+      <a href="../../../socials.html">Socials</a>
+      <a href="../../../downloads.html" class="active">Downloads</a>
+      <a href="../../../techcollection.html">Tech Collection</a>
+      <a href="../../../about.html">About Website</a>
+    </div>
+  </div>
+</div>
+
+<div class="page-header">
+  <img src="../../../icons/windows-vista.png">
+  <h1>Windows Vista ISO Downloads</h1>
+  <p>Official Windows Vista disc images — select your edition and version</p>
+</div>
+
+<div style="width:980px;margin:-10px auto 20px;padding:10px 20px;
+background:linear-gradient(#f8fbff,#eef4fb);border:1px solid #d0e0f0;
+border-radius:6px;font-size:13px;color:#003e7e;text-align:center;">
+ℹ️ <strong>Note:</strong> Windows Vista ISOs are All-In-One (AIO) —
+one disc contains all editions. Select your preferred edition above
+then download the single AIO ISO for your architecture.
+</div>
+
+<div class="section-label">32-Bit (x86)</div>
+<div class="iso-container">
+
+  <div class="iso-card" id="card-vhp32">
+    <h2>Windows Vista Home Premium</h2>
+    <div class="version-select-wrap">
+      <label>Version</label>
+      <select class="version-select" onchange="updateSpecs(this, 'vhp32')">
+        <option value="rtm" selected>RTM (Build 6000)</option>
+        <option value="sp1">SP1 (Build 6001)</option>
+        <option value="sp2">SP2 (Build 6002)</option>
+      </select>
+    </div>
+    <div class="spec-info" id="vhp32">
+      <div><span class="spec-label">Build:</span> 6000</div>
+      <div><span class="spec-label">Type:</span> AIO</div>
+      <div><span class="spec-label">Arch:</span> 32-Bit (x86)</div>
+      <div><span class="spec-label">Language:</span> English</div>
+      <div><span class="spec-label">Size:</span> ~2.5GB</div>
+    </div>
+    <a href="https://files.rg-adguard.net/file/4f72a5fa-0bb6-63bb-9967-2eb9d85bdeee"
+       class="aero-btn dl-link" target="_blank" rel="noopener" style="display:block;">
+      <div class="aero-btn-inner"><span>Download AIO ISO</span></div>
+    </a>
+  </div>
+
+  <div class="iso-card" id="card-vbus32">
+    <h2>Windows Vista Business</h2>
+    <div class="version-select-wrap">
+      <label>Version</label>
+      <select class="version-select" onchange="updateSpecs(this, 'vbus32')">
+        <option value="rtm" selected>RTM (Build 6000)</option>
+        <option value="sp1">SP1 (Build 6001)</option>
+        <option value="sp2">SP2 (Build 6002)</option>
+      </select>
+    </div>
+    <div class="spec-info" id="vbus32">
+      <div><span class="spec-label">Build:</span> 6000</div>
+      <div><span class="spec-label">Type:</span> AIO</div>
+      <div><span class="spec-label">Arch:</span> 32-Bit (x86)</div>
+      <div><span class="spec-label">Language:</span> English</div>
+      <div><span class="spec-label">Size:</span> ~2.5GB</div>
+    </div>
+    <a href="https://files.rg-adguard.net/file/4f72a5fa-0bb6-63bb-9967-2eb9d85bdeee"
+       class="aero-btn dl-link" target="_blank" rel="noopener" style="display:block;">
+      <div class="aero-btn-inner"><span>Download AIO ISO</span></div>
+    </a>
+  </div>
+
+  <div class="iso-card" id="card-vult32">
+    <h2>Windows Vista Ultimate</h2>
+    <div class="version-select-wrap">
+      <label>Version</label>
+      <select class="version-select" onchange="updateSpecs(this, 'vult32')">
+        <option value="rtm" selected>RTM (Build 6000)</option>
+        <option value="sp1">SP1 (Build 6001)</option>
+        <option value="sp2">SP2 (Build 6002)</option>
+      </select>
+    </div>
+    <div class="spec-info" id="vult32">
+      <div><span class="spec-label">Build:</span> 6000</div>
+      <div><span class="spec-label">Type:</span> AIO</div>
+      <div><span class="spec-label">Arch:</span> 32-Bit (x86)</div>
+      <div><span class="spec-label">Language:</span> English</div>
+      <div><span class="spec-label">Size:</span> ~2.6GB</div>
+    </div>
+    <a href="https://files.rg-adguard.net/file/4f72a5fa-0bb6-63bb-9967-2eb9d85bdeee"
+       class="aero-btn dl-link" target="_blank" rel="noopener" style="display:block;">
+      <div class="aero-btn-inner"><span>Download AIO ISO</span></div>
+    </a>
+  </div>
+
+</div>
+
+<div class="section-label">64-Bit (x64)</div>
+<div class="iso-container">
+
+  <div class="iso-card" id="card-vhp64">
+    <h2>Windows Vista Home Premium</h2>
+    <div class="version-select-wrap">
+      <label>Version</label>
+      <select class="version-select" onchange="updateSpecs(this, 'vhp64')">
+        <option value="rtm" selected>RTM (Build 6000)</option>
+        <option value="sp1">SP1 (Build 6001)</option>
+        <option value="sp2">SP2 (Build 6002)</option>
+      </select>
+    </div>
+    <div class="spec-info" id="vhp64">
+      <div><span class="spec-label">Build:</span> 6000</div>
+      <div><span class="spec-label">Type:</span> AIO</div>
+      <div><span class="spec-label">Arch:</span> 64-Bit (x64)</div>
+      <div><span class="spec-label">Language:</span> English</div>
+      <div><span class="spec-label">Size:</span> ~3.1GB</div>
+    </div>
+    <a href="https://files.rg-adguard.net/file/f2229993-bebf-3198-a1e9-5c787b938f24"
+       class="aero-btn dl-link" target="_blank" rel="noopener" style="display:block;">
+      <div class="aero-btn-inner"><span>Download AIO ISO</span></div>
+    </a>
+  </div>
+
+  <div class="iso-card" id="card-vbus64">
+    <h2>Windows Vista Business</h2>
+    <div class="version-select-wrap">
+      <label>Version</label>
+      <select class="version-select" onchange="updateSpecs(this, 'vbus64')">
+        <option value="rtm" selected>RTM (Build 6000)</option>
+        <option value="sp1">SP1 (Build 6001)</option>
+        <option value="sp2">SP2 (Build 6002)</option>
+      </select>
+    </div>
+    <div class="spec-info" id="vbus64">
+      <div><span class="spec-label">Build:</span> 6000</div>
+      <div><span class="spec-label">Type:</span> AIO</div>
+      <div><span class="spec-label">Arch:</span> 64-Bit (x64)</div>
+      <div><span class="spec-label">Language:</span> English</div>
+      <div><span class="spec-label">Size:</span> ~3.1GB</div>
+    </div>
+    <a href="https://files.rg-adguard.net/file/f2229993-bebf-3198-a1e9-5c787b938f24"
+       class="aero-btn dl-link" target="_blank" rel="noopener" style="display:block;">
+      <div class="aero-btn-inner"><span>Download AIO ISO</span></div>
+    </a>
+  </div>
+
+  <div class="iso-card" id="card-vult64">
+    <h2>Windows Vista Ultimate</h2>
+    <div class="version-select-wrap">
+      <label>Version</label>
+      <select class="version-select" onchange="updateSpecs(this, 'vult64')">
+        <option value="rtm" selected>RTM (Build 6000)</option>
+        <option value="sp1">SP1 (Build 6001)</option>
+        <option value="sp2">SP2 (Build 6002)</option>
+      </select>
+    </div>
+    <div class="spec-info" id="vult64">
+      <div><span class="spec-label">Build:</span> 6000</div>
+      <div><span class="spec-label">Type:</span> AIO</div>
+      <div><span class="spec-label">Arch:</span> 64-Bit (x64)</div>
+      <div><span class="spec-label">Language:</span> English</div>
+      <div><span class="spec-label">Size:</span> ~3.2GB</div>
+    </div>
+    <a href="https://files.rg-adguard.net/file/f2229993-bebf-3198-a1e9-5c787b938f24"
+       class="aero-btn dl-link" target="_blank" rel="noopener" style="display:block;">
+      <div class="aero-btn-inner"><span>Download AIO ISO</span></div>
+    </a>
+  </div>
+
+</div>
+
+<div class="footer">© 2026 7web · Windows7RTM</div>
+
+<script>
+const specs = {
+  vhp32:  {
+    rtm: { build:'6000', size:'~2.5GB', link:'https://files.rg-adguard.net/file/4f72a5fa-0bb6-63bb-9967-2eb9d85bdeee' },
+    sp1:  { build:'6001', size:'~2.7GB', link:'#' },
+    sp2:  { build:'6002', size:'~2.8GB', link:'#' },
+  },
+  vbus32: {
+    rtm: { build:'6000', size:'~2.5GB', link:'https://files.rg-adguard.net/file/4f72a5fa-0bb6-63bb-9967-2eb9d85bdeee' },
+    sp1:  { build:'6001', size:'~2.7GB', link:'#' },
+    sp2:  { build:'6002', size:'~2.8GB', link:'#' },
+  },
+  vult32: {
+    rtm: { build:'6000', size:'~2.6GB', link:'https://files.rg-adguard.net/file/4f72a5fa-0bb6-63bb-9967-2eb9d85bdeee' },
+    sp1:  { build:'6001', size:'~2.8GB', link:'#' },
+    sp2:  { build:'6002', size:'~2.9GB', link:'#' },
+  },
+  vhp64: {
+    rtm: { build:'6000', size:'~3.1GB', link:'https://files.rg-adguard.net/file/f2229993-bebf-3198-a1e9-5c787b938f24' },
+    sp1:  { build:'6001', size:'~3.3GB', link:'#' },
+    sp2:  { build:'6002', size:'~3.4GB', link:'#' },
+  },
+  vbus64: {
+    rtm: { build:'6000', size:'~3.1GB', link:'https://files.rg-adguard.net/file/f2229993-bebf-3198-a1e9-5c787b938f24' },
+    sp1:  { build:'6001', size:'~3.3GB', link:'#' },
+    sp2:  { build:'6002', size:'~3.4GB', link:'#' },
+  },
+  vult64: {
+    rtm: { build:'6000', size:'~3.2GB', link:'https://files.rg-adguard.net/file/f2229993-bebf-3198-a1e9-5c787b938f24' },
+    sp1:  { build:'6001', size:'~3.4GB', link:'#' },
+    sp2:  { build:'6002', size:'~3.5GB', link:'#' },
+  },
+};
+
+const arch = {
+  vhp32:'32-Bit (x86)', vbus32:'32-Bit (x86)', vult32:'32-Bit (x86)',
+  vhp64:'64-Bit (x64)', vbus64:'64-Bit (x64)', vult64:'64-Bit (x64)',
+};
+
+function updateSpecs(select, id) {
+  const ver = select.value;
+  const s = specs[id][ver];
+  const el = document.getElementById(id);
+  const unavailable = s.link === '#';
+
+  el.innerHTML = `
+    <div><span class="spec-label">Build:</span> ${s.build}</div>
+    <div><span class="spec-label">Type:</span> AIO</div>
+    <div><span class="spec-label">Arch:</span> ${arch[id]}</div>
+    <div><span class="spec-label">Language:</span> English</div>
+    <div><span class="spec-label">Size:</span> ${s.size}</div>
+  `;
+
+  const card = document.getElementById('card-' + id);
+  const btn = card.querySelector('.dl-link');
+  if (unavailable) {
+    btn.href = '#';
+    btn.querySelector('span').textContent = 'Not Available';
+    btn.style.opacity = '0.5';
+    btn.style.pointerEvents = 'none';
+  } else {
+    btn.href = s.link;
+    btn.querySelector('span').textContent = 'Download AIO ISO';
+    btn.style.opacity = '1';
+    btn.style.pointerEvents = 'auto';
+  }
+}
+</script>
+</body>
+</html>
